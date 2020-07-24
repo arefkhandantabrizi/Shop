@@ -1,0 +1,56 @@
+.login {
+  width: 45vw;
+
+  &__heading {
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    margin-right: 3rem;
+  }
+
+  &__registration-txt {
+    margin-right: 3rem;
+    font-size: 1.4rem;
+  }
+
+  &__btn {
+    margin-right: 3rem;
+    margin-bottom: 3rem;
+    outline: none;
+    background-color: $color-tertiary-dark;
+    color: #fff;
+    border: none;
+    border-radius: 10rem;
+    font-family: $font-display;
+    font-size: 1.5rem;
+    padding: 1rem 5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      outline: none;
+      background-color: $color-tertiary;
+    }
+  }
+
+  &__registration-btn:visited,
+  &__registration-btn:link {
+    cursor: pointer;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+      transform: translateY(-0.2 rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    }
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+  }
+}

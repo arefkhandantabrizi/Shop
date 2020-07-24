@@ -1,0 +1,94 @@
+.registration {
+  margin-bottom: 3rem;
+  &__form {
+    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat (7, 1fr);
+    width: 50vw;
+  }
+
+  &__heading {
+    margin-top: 3rem;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    margin-right: 3rem;
+  }
+  &__input {
+    margin-right: 3rem;
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 3rem;
+    background-color: rgba($color-grey-light-1, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-grey-light-1, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+
+    &-1 {
+      grid-row: 1 / span 1;
+      grid-column: 1 / span 2;
+    }
+
+    &-2 {
+      grid-row: 2 / span 1;
+      grid-column: 1 / span 3;
+    }
+    &-3 {
+      grid-row: 3 / span 1;
+      grid-column: 1 / span 3;
+    }
+    &-4 {
+      grid-row: 4 / span 1;
+      grid-column: 1 / span 3;
+    }
+    &-5 {
+      grid-row: 5 / span 1;
+      grid-column: 1 / span 1;
+    }
+  }
+  &__label {
+    position: absolute;
+    top: 110%;
+    right: 3rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-right: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8rem);
+  }
+  &__btn {
+    margin-right: 2rem;
+    grid-row: 7 / span 1;
+    grid-column: 1 / span 1;
+    padding: 1rem 3rem;
+    margin-bottom: 3rem;
+    justify-self: start;
+    align-self: start;
+  }
+}

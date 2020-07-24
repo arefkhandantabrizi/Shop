@@ -1,0 +1,26 @@
+.header {
+  grid-column: sidebar-start / -1;
+  grid-row: 2 / 3;
+
+  background-image: linear-gradient(
+      rgba($color-secondary, 0.53),
+      rgba($color-secondary, 0.53)
+    ),
+    url(../img/1.jpg);
+  background-size: cover;
+  background-position: center;
+
+  justify-content: center;
+
+  display: grid;
+  grid-template-columns: max-content;
+  grid-row-gap: 1.5rem;
+  justify-content: center;
+  align-items: end;
+
+  &__btn {
+    margin-top: 5rem;
+    justify-self: center;
+    align-self: start;
+  }
+}

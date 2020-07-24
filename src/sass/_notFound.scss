@@ -1,0 +1,8 @@
+.notFound {
+  grid-column: sidebar-start / full-end;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+}

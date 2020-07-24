@@ -1,0 +1,46 @@
+.section-login {
+  grid-column: sidebar-start / full-end;
+
+  background-image: linear-gradient(
+      260deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/login.jpg);
+  background-size: cover;
+  background-position: center;
+
+  justify-content: center;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-row-gap: 1.5rem;
+  justify-content: right;
+  align-items: center;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
+
+.section-registration {
+  grid-column: sidebar-start / full-end;
+
+  background-image: linear-gradient(
+      260deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/login.jpg);
+  background-size: cover;
+  background-position: center;
+
+  align-content: center;
+
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-row-gap: 1.5rem;
+  justify-content: right;
+  align-items: center;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+}
