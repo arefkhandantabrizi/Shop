@@ -11,7 +11,7 @@ const Footer = () => {
           </Link>
         </li>
         <li className="footernav__item">
-          <Link to="#" className="footernav__link">
+          <Link to="/order-jacket" className="footernav__link">
             سفارش لباس
           </Link>
         </li>

@@ -6,7 +6,7 @@ import AccessDenied from "./components/accessDenied";
 import NotFound from "./components/notFound";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
-import orderMantoForm from "./components/orderMantoForm";
+import OrderJacketForm from "./components/orderJacketForm";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/access-denied" component={AccessDenied} />
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
-          <Route path="/order-manto" component={orderMantoForm} />
+          <Route path="/order-jacket" component={OrderJacketForm} />
 
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

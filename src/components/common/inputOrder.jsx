@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputRegister = ({
+const InputOrder = ({
   divClass,
   labelClass,
   name,
@@ -26,4 +26,4 @@ const InputRegister = ({
   );
 };
 
-export default InputRegister;
+export default InputOrder;

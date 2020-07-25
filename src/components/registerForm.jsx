@@ -53,6 +53,7 @@ class RegisterForm extends Form {
           <h1 className="registration__heading heading-1--dark">ثبت نام</h1>
           <form onSubmit={this.handleSubmit} className="registration__form">
             {this.renderInputRegister(
+              "registration__label",
               "form__group registration__input-1",
               "10",
               "username",
@@ -62,6 +63,7 @@ class RegisterForm extends Form {
               "([0-9]){10}"
             )}
             {this.renderInputRegister(
+              "registration__label",
               "form__group registration__input-2",
               "50",
               "password",
@@ -70,6 +72,7 @@ class RegisterForm extends Form {
               "registration__input "
             )}
             {this.renderInputRegister(
+              "registration__label",
               "form__group registration__input-3",
               "50",
               "name",
@@ -79,6 +82,7 @@ class RegisterForm extends Form {
             )}
 
             {this.renderInputRegister(
+              "registration__label",
               "form__group registration__input-4",
               "50",
               "schoolName",
@@ -87,6 +91,7 @@ class RegisterForm extends Form {
               "registration__input"
             )}
             {this.renderInputRegister(
+              "registration__label",
               "form__group registration__input-5",
               "1",
               "schoolGrade",

@@ -25,7 +25,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="nav__item">
-          <NavLink className="nav__link" to="/order-manto">
+          <NavLink className="nav__link" to="/order-jacket">
             سفارش لباس
           </NavLink>
         </li>

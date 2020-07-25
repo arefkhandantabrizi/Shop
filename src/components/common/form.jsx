@@ -5,10 +5,15 @@ import Select from "./select";
 import TextArea from "./textArea";
 import InputRegister from "./inputRegister";
 import TextAreaRegistration from "./textAreaRegistration";
+import InputOrder from "./inputOrder";
+import HipPicture from "../../img/gal-1.jpg";
+import ShoulderPicture from "../../img/gal-2.jpg";
 
 class Form extends Component {
   state = {
     data: {},
+    imageSource: "",
+    textSource: "",
     errors: {},
   };
 
@@ -31,6 +36,21 @@ class Form extends Component {
     const data = { ...this.state.data };
     data[input.name] = input.value;
     this.setState({ data, errors });
+  };
+
+  handleClick = ({ currentTarget: input }) => {
+    const { id } = input;
+    switch (id) {
+      case "hip":
+        this.setState({ imageSource: HipPicture });
+        break;
+      case "chest":
+        this.setState({ imageSource: ShoulderPicture });
+        break;
+
+      default:
+        break;
+    }
   };
 
   validateProperty = ({ name, value }) => {
@@ -63,51 +83,6 @@ class Form extends Component {
         error={errors[name]}
       />
     );
-  }
-
-  renderError(error) {
-    switch (error.details[0].message) {
-      case '"نام کاربری" is not allowed to be empty':
-        return "نام کاربری نمی تواند خالی باشد";
-      case '"عنوان متن" is not allowed to be empty':
-        return "عنوان متن نمی تواند خالی باشد";
-      case '"توضیحات متن" is not allowed to be empty':
-        return "توضیحات متن نمی تواند خالی باشد";
-      case '"عنوان آموزش" is not allowed to be empty':
-        return "عنوان آموزش نمی تواند خالی باشد";
-      case '"رمز عبور" is not allowed to be empty':
-        return "رمز عبور نمی تواند خالی باشد";
-      case '"نام" is not allowed to be empty':
-        return "نام نمی تواند خالی باشد";
-      case '"نام و نام خانوادگی" is not allowed to be empty':
-        return "نام و نام خانوادگی نمی تواند خالی باشد";
-      case '"نام و نام خانوادگی" length must be at least 3 characters long':
-        return "نام و نام خانوادگی نمی تواند کمتر از ۳ کاراکتر باشد";
-      case '"نام مدرسه" is not allowed to be empty':
-        return "نام مدرسه نمی تواند خالی باشد";
-      case '"نام مدرسه" length must be at least 3 characters long':
-        return "نام مدرسه نمی تواند کمتر از ۳ کاراکتر باشد";
-      case '"نام" length must be at least 3 characters long':
-        return "نام نمی تواند کمتر از ۳ کاراکتر باشد";
-      case '"نام کاربری" must be a valid email':
-        return "نام کاربری باید ایمیل معتبر باشد";
-      case '"نام کاربری" must be a number':
-        return "نام کاربری باید عدد باشد";
-      case '"نام کاربری" length must be 10 characters long':
-        return "شماره وارد شده برای کد ملی صحیح نیست";
-      case '"تلفن همراه" length must be at least 11 characters long':
-        return "شماره تلفن صحیح نیست";
-
-      case '"پایه تحصیلی" is not allowed to be empty':
-        return "پایه تحصیلی باید مقداری بین ۱ و ۶ داشته باشد";
-      // case `"نام کاربری" with value ${this.state.data.username} fails to match the required pattern: /[0-9]{10}/`:
-      //   return "نام کاربری باید مطابق شماره ملی باشد";
-
-      default:
-        // console.log(error.details[0].message);
-
-        return "مقدار وارد شده صحیح نمی باشد";
-    }
   }
 
   renderButton(label, className = "btn form__btn") {
@@ -190,6 +165,7 @@ class Form extends Component {
     );
   }
   renderInputRegister(
+    labelClass,
     divClass,
     maxLength,
     name,
@@ -201,6 +177,7 @@ class Form extends Component {
     const { errors, data } = this.state;
     return (
       <InputRegister
+        labelClass={labelClass}
         divClass={divClass}
         className={className}
         maxLength={maxLength}
@@ -213,6 +190,79 @@ class Form extends Component {
         error={errors[name]}
       />
     );
+  }
+  renderInputOrder(
+    labelClass,
+    divClass,
+    maxLength,
+    name,
+    label,
+    type = "text",
+    className = "form__input",
+    pattern = "(.*)"
+  ) {
+    const { errors, data } = this.state;
+    return (
+      <InputOrder
+        labelClass={labelClass}
+        divClass={divClass}
+        className={className}
+        maxLength={maxLength}
+        pattern={pattern}
+        type={type}
+        name={name}
+        label={label}
+        value={data[name]}
+        onChange={this.handleChange}
+        onClick={this.handleClick}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderError(error) {
+    switch (error.details[0].message) {
+      case '"نام کاربری" is not allowed to be empty':
+        return "نام کاربری نمی تواند خالی باشد";
+      case '"عنوان متن" is not allowed to be empty':
+        return "عنوان متن نمی تواند خالی باشد";
+      case '"توضیحات متن" is not allowed to be empty':
+        return "توضیحات متن نمی تواند خالی باشد";
+      case '"عنوان آموزش" is not allowed to be empty':
+        return "عنوان آموزش نمی تواند خالی باشد";
+      case '"رمز عبور" is not allowed to be empty':
+        return "رمز عبور نمی تواند خالی باشد";
+      case '"نام" is not allowed to be empty':
+        return "نام نمی تواند خالی باشد";
+      case '"نام و نام خانوادگی" is not allowed to be empty':
+        return "نام و نام خانوادگی نمی تواند خالی باشد";
+      case '"نام و نام خانوادگی" length must be at least 3 characters long':
+        return "نام و نام خانوادگی نمی تواند کمتر از ۳ کاراکتر باشد";
+      case '"نام مدرسه" is not allowed to be empty':
+        return "نام مدرسه نمی تواند خالی باشد";
+      case '"نام مدرسه" length must be at least 3 characters long':
+        return "نام مدرسه نمی تواند کمتر از ۳ کاراکتر باشد";
+      case '"نام" length must be at least 3 characters long':
+        return "نام نمی تواند کمتر از ۳ کاراکتر باشد";
+      case '"نام کاربری" must be a valid email':
+        return "نام کاربری باید ایمیل معتبر باشد";
+      case '"نام کاربری" must be a number':
+        return "نام کاربری باید عدد باشد";
+      case '"نام کاربری" length must be 10 characters long':
+        return "شماره وارد شده برای کد ملی صحیح نیست";
+      case '"تلفن همراه" length must be at least 11 characters long':
+        return "شماره تلفن صحیح نیست";
+
+      case '"پایه تحصیلی" is not allowed to be empty':
+        return "پایه تحصیلی باید مقداری بین ۱ و ۶ داشته باشد";
+      // case `"نام کاربری" with value ${this.state.data.username} fails to match the required pattern: /[0-9]{10}/`:
+      //   return "نام کاربری باید مطابق شماره ملی باشد";
+
+      default:
+        console.log(error.details[0].message);
+
+        return "مقدار وارد شده صحیح نمی باشد";
+    }
   }
 }
 
