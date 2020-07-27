@@ -1,4 +1,4 @@
-.orderjacket {
+.orderpants {
   grid-column: sidebar-end / full-end;
   padding: 1rem 3rem;
 
@@ -51,13 +51,6 @@
     &-4 {
       grid-column: 1 / span 1;
     }
-    &-5 {
-      grid-column: 1 / span 1;
-    }
-
-    &-6 {
-      grid-column: 1 / span 1;
-    }
   }
   &__label {
     position: absolute;
@@ -86,7 +79,7 @@
     align-self: start;
   }
   &__extra {
-    grid-row: 1 / span 4;
+    grid-row: 1 / span 3;
     grid-column: 2 / span 1;
     display: grid;
     grid-template-columns: 1fr;

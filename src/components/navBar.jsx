@@ -1,37 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import Logo from "../img/logo.png";
 
-const NavBar = () => {
-  return (
-    <div className="navbar">
-      <ul className="nav">
-        <li className="nav__item">
-          <img src={Logo} alt="logo" className="nav__img" />
-        </li>
-        <li className="nav__item">
-          <NavLink className="nav__link" to="/">
-            صفحه اصلی
-          </NavLink>
-        </li>
-        {/* <li className="nav__item">
-          <NavLink className="nav__link" to="/register">
-            ثبت نام
-          </NavLink>
-        </li> */}
-        <li className="nav__item">
-          <NavLink className="nav__link" to="/login">
-            ورود
-          </NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink className="nav__link" to="/order-jacket">
-            سفارش لباس
-          </NavLink>
-        </li>
-      </ul>
-    </div>
-  );
+class NavBar extends Component {
+  render() {
+    return (
+      <div className="navbar">
+        <ul className="nav">
+          <li className="nav__item">
+            <img src={Logo} alt="logo" className="nav__img" />
+          </li>
+          <li className="nav__item">
+            <NavLink className="nav__link" to="/">
+              صفحه اصلی
+            </NavLink>
+          </li>
+          {/* <li className="nav__item">
+        <NavLink className="nav__link" to="/register">
+          ثبت نام
+        </NavLink>
+      </li> */}
+          <li className="nav__item">
+            <NavLink className="nav__link" to="/login">
+              ورود
+            </NavLink>
+          </li>
+          <li className="nav__item">
+            <NavLink className="nav__link" to={this.props.routeto}>
+              سفارش لباس
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    routeto: state.entities.bugs.sidebar.routeto,
+  };
 };
 
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);

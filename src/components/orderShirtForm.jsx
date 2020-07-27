@@ -1,20 +1,20 @@
 import React, { Fragment } from "react";
 import Joi from "joi-browser";
-// import { Link } from "react-router-dom";
-import Form from "./common/form";
-import NavBar from "./navBar";
-import Footer from "./footer";
-import SideBar from "./sideBar";
 
-class OrderJacketForm extends Form {
+import Footer from "./footer";
+import NavBar from "./navBar";
+import SideBar from "./sideBar";
+import Form from "./common/form";
+
+class OrderShirtForm extends Form {
   state = {
     data: {
-      jacketHeight: "",
-      jacketChest: "",
-      jacketHip: "",
-      jacketSleeve: "",
-      jacketShoulder: "",
-      jacketQuantity: "",
+      shirtHeight: "",
+      shirtChest: "",
+      shirtHip: "",
+      shirtSleeve: "",
+      shirtShoulder: "",
+      shirtQuantity: "",
     },
     imageSource: "",
     textSource: "",
@@ -22,24 +22,20 @@ class OrderJacketForm extends Form {
   };
 
   schema = {
-    jacketChest: Joi.number().min(65).max(100).required().label("jacketChest"),
-    jacketSleeve: Joi.number().min(30).max(68).required().label("jacketSleeve"),
-    jacketHeight: Joi.number()
-      .min(61)
-      .max(105)
+    shirtChest: Joi.number().min(70).max(125).required().label("shirtChest"),
+    shirtSleeve: Joi.number().min(30).max(70).required().label("shirtSleeve"),
+    shirtHeight: Joi.number().min(45).max(75).required().label("shirtHeight"),
+    shirtShoulder: Joi.number()
+      .min(28)
+      .max(48)
       .required()
-      .label("jacketHeight"),
-    jacketShoulder: Joi.number()
-      .min(24)
-      .max(40)
-      .required()
-      .label("jacketShoulder"),
-    jacketHip: Joi.number().min(70).max(110).required().label("jacketHip"),
-    jacketQuantity: Joi.number()
+      .label("shirtShoulder"),
+    shirtHip: Joi.number().min(70).max(125).required().label("shirtHip"),
+    shirtQuantity: Joi.number()
       .min(1)
       .max(10)
       .required()
-      .label("jacketQuantity"),
+      .label("shirtQuantity"),
   };
 
   doSubmitt = async () => {
@@ -63,15 +59,15 @@ class OrderJacketForm extends Form {
         <SideBar />
         <div className="orderjacket">
           <h1 className="orderjacket__heading heading-2--dark u-margin-top-small">
-            سفارش مانتو
+            سفارش بلوز
           </h1>
           <form onSubmit={this.handleSubmit} className="orderjacket__form">
             {this.renderInputOrder(
               "orderjacket__label",
               "form__group orderjacket__input-1",
               "6",
-              "jacketHeight",
-              "قد مانتو",
+              "shirtHeight",
+              "قد بلوز",
               "text",
               "orderjacket__input"
             )}
@@ -79,7 +75,7 @@ class OrderJacketForm extends Form {
               "orderjacket__label",
               "form__group orderjacket__input-2",
               "6",
-              "jacketChest",
+              "shirtChest",
               "دور سینه",
               "text",
               "orderjacket__input"
@@ -88,7 +84,7 @@ class OrderJacketForm extends Form {
               "orderjacket__label",
               "form__group orderjacket__input-3",
               "6",
-              "jacketHip",
+              "shirtHip",
               "دور باسن",
               "text",
               "orderjacket__input"
@@ -97,7 +93,7 @@ class OrderJacketForm extends Form {
               "orderjacket__label",
               "form__group orderjacket__input-4",
               "6",
-              "jacketSleeve",
+              "shirtSleeve",
               "قد آستین",
               "text",
               "orderjacket__input"
@@ -106,7 +102,7 @@ class OrderJacketForm extends Form {
               "orderjacket__label",
               "form__group orderjacket__input-5",
               "6",
-              "jacketShoulder",
+              "shirtShoulder",
               "تمام شانه",
               "text",
               "orderjacket__input"
@@ -115,7 +111,7 @@ class OrderJacketForm extends Form {
               "orderjacket__label",
               "form__group orderjacket__input-6",
               "2",
-              "jacketQuantity",
+              "shirtQuantity",
               "تعداد",
               "number",
               "orderjacket__input"
@@ -142,4 +138,4 @@ class OrderJacketForm extends Form {
   }
 }
 
-export default OrderJacketForm;
+export default OrderShirtForm;

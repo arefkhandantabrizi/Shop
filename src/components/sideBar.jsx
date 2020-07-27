@@ -1,64 +1,79 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bugAdded } from "../store/bugs";
 
 class SideBar extends Component {
-  state = {
-    Class1: "side-nav__item side-nav__item--active",
-    Class2: "side-nav__item",
-    Class3: "side-nav__item",
-    Class4: "side-nav__item",
-    activeClass: "Class1",
-  };
-
   handleClick = ({ currentTarget: sidenav }) => {
     const { id } = sidenav;
     const simple = "side-nav__item";
-    const activeClass = this.state.activeClass;
+    const activeClass = this.props.activeClass;
 
     switch (id) {
-      case "pants":
-        let Class2 = this.state.Class2;
-        if (activeClass !== "Class2") Class2 += " side-nav__item--active";
-        this.setState({
-          Class2,
-          Class1: simple,
-          Class3: simple,
-          Class4: simple,
-          activeClass: "Class2",
-        });
-        break;
       case "jacket":
-        let Class1 = this.state.Class1;
-        if (activeClass !== "Class1") Class1 += " side-nav__item--active";
-        this.setState({
-          Class2: simple,
-          Class1,
-          Class3: simple,
-          Class4: simple,
-          activeClass: "Class1",
-        });
+        let Class1 = this.props.class1;
+        if (this.props.activeClass !== id) {
+          Class1 += " side-nav__item--active";
+          this.props.bugAdded({
+            description: id,
+            routeto: "/order-jacket",
+            activeClass,
+            class1: Class1,
+            class2: simple,
+            class3: simple,
+            class4: simple,
+          });
+        }
+
         break;
+
+      case "pants":
+        let Class2 = this.props.class2;
+        if (this.props.activeClass !== id) {
+          Class2 += " side-nav__item--active";
+          this.props.bugAdded({
+            description: id,
+            routeto: "/order-pants",
+            activeClass,
+            class1: simple,
+            class2: Class2,
+            class3: simple,
+            class4: simple,
+          });
+        }
+        break;
+
       case "shirt":
-        let Class3 = this.state.Class3;
-        if (activeClass !== "Class3") Class3 += " side-nav__item--active";
-        this.setState({
-          Class2: simple,
-          Class1: simple,
-          Class3,
-          Class4: simple,
-          activeClass: "Class3",
-        });
+        let Class3 = this.props.class3;
+        if (this.props.activeClass !== id) {
+          Class3 += " side-nav__item--active";
+          this.props.bugAdded({
+            description: id,
+            routeto: "/order-shirt",
+            activeClass,
+            class1: simple,
+            class2: simple,
+            class3: Class3,
+            class4: simple,
+          });
+        }
+
         break;
+
       case "scarf":
-        let Class4 = this.state.Class4;
-        if (activeClass !== "Class4") Class4 += " side-nav__item--active";
-        this.setState({
-          Class2: simple,
-          Class1: simple,
-          Class3: simple,
-          Class4,
-          activeClass: "Class4",
-        });
+        let Class4 = this.props.class4;
+        if (this.props.activeClass !== id) {
+          Class4 += " side-nav__item--active";
+          this.props.bugAdded({
+            description: id,
+            routeto: "/order-scarf",
+            activeClass,
+            class1: simple,
+            class2: simple,
+            class3: simple,
+            class4: Class4,
+          });
+        }
         break;
 
       default:
@@ -73,7 +88,7 @@ class SideBar extends Component {
           <li
             id="jacket"
             onClick={this.handleClick}
-            className={this.state.Class1}
+            className={this.props.class1}
           >
             <Link className="side-nav__link" to="/order-jacket">
               مانتو
@@ -82,25 +97,25 @@ class SideBar extends Component {
           <li
             onClick={this.handleClick}
             id="pants"
-            className={this.state.Class2}
+            className={this.props.class2}
           >
-            <Link className="side-nav__link" to="#">
+            <Link className="side-nav__link" to="/order-pants">
               شلوار
             </Link>
           </li>
           <li
             onClick={this.handleClick}
             id="shirt"
-            className={this.state.Class3}
+            className={this.props.class3}
           >
-            <Link className="side-nav__link" to="#">
+            <Link className="side-nav__link" to="/order-shirt">
               بلوز
             </Link>
           </li>
           <li
             onClick={this.handleClick}
             id="scarf"
-            className={this.state.Class4}
+            className={this.props.class4}
           >
             <Link className="side-nav__link" to="#">
               مقنعه
@@ -112,4 +127,24 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+// function mapStateToProps(state) {
+//   return {
+//     activeClass: state.entities.bugs.sidebar.activeClass,
+//     class1: state.entities.bugs.sidebar.class1,
+//     class2: state.entities.bugs.sidebar.class2,
+//     class3: state.entities.bugs.sidebar.class3,
+//     class4: state.entities.bugs.sidebar.class4,
+//   };
+// }
+const mapStateToProps = (state) => {
+  return {
+    activeClass: state.entities.bugs.sidebar.activeClass,
+    routeto: state.entities.bugs.sidebar.routeto,
+    class1: state.entities.bugs.sidebar.class1,
+    class2: state.entities.bugs.sidebar.class2,
+    class3: state.entities.bugs.sidebar.class3,
+    class4: state.entities.bugs.sidebar.class4,
+  };
+};
+
+export default connect(mapStateToProps, { bugAdded })(SideBar);

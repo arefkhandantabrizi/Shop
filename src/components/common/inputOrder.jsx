@@ -11,7 +11,11 @@ const InputOrder = ({
 }) => {
   return (
     <div className={divClass}>
-      {error && <div className="alert alert__danger rounded-pill">{error}</div>}
+      {error && (
+        <div className="alert alert__danger--withoutbackground rounded-pill">
+          {error}
+        </div>
+      )}
       <input
         {...rest}
         name={name}
