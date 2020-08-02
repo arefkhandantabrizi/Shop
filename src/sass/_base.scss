@@ -54,6 +54,8 @@ body {
 }
 
 .container {
+  background-color: rgba($color-grey-light-1, 0.5);
+
   display: grid;
 
   grid-template-rows: min-content minmax(80vh, max-content);

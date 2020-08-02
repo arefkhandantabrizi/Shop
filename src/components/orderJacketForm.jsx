@@ -57,6 +57,7 @@ class OrderJacketForm extends Form {
   };
 
   render() {
+    document.title = "تولیدی پوشاک ملینا ترشیز|‌سفارش مانتو";
     return (
       <Fragment>
         <NavBar />
@@ -66,61 +67,63 @@ class OrderJacketForm extends Form {
             سفارش مانتو
           </h1>
           <form onSubmit={this.handleSubmit} className="orderjacket__form">
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-1",
-              "6",
-              "jacketHeight",
-              "قد مانتو",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-2",
-              "6",
-              "jacketChest",
-              "دور سینه",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-3",
-              "6",
-              "jacketHip",
-              "دور باسن",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-4",
-              "6",
-              "jacketSleeve",
-              "قد آستین",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-5",
-              "6",
-              "jacketShoulder",
-              "تمام شانه",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-6",
-              "2",
-              "jacketQuantity",
-              "تعداد",
-              "number",
-              "orderjacket__input"
-            )}
-            {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
+            <div className="orderjacket__input">
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-1",
+                "6",
+                "jacketHeight",
+                "قد مانتو",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-2",
+                "6",
+                "jacketChest",
+                "دور سینه",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-3",
+                "6",
+                "jacketHip",
+                "دور باسن",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-4",
+                "6",
+                "jacketSleeve",
+                "قد آستین",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-5",
+                "6",
+                "jacketShoulder",
+                "تمام شانه",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-6",
+                "2",
+                "jacketQuantity",
+                "تعداد",
+                "number",
+                "orderjacket__input"
+              )}
+              {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
+            </div>
 
             {this.state.imageSource && (
               <div className="orderjacket__extra">
@@ -130,7 +133,9 @@ class OrderJacketForm extends Form {
                   className="orderjacket__extra--image"
                 />
                 <p className="orderjacket__extra--text">
-                  {this.state.textSource}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur numquam reiciendis molestiae nam officiis, eius
+                  officia dicta culpa
                 </p>
               </div>
             )}

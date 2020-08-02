@@ -115,17 +115,23 @@
 }
 
 .alert {
-  width: 80%;
+  width: 100%;
   font-size: 1.3rem;
   margin-right: 3rem;
   padding: 1.4rem 2rem;
 
   &__danger {
     color: #eb1515d5;
-    background-color: #fad7d7;
+    // background-color: #fad7d7;
   }
+}
 
-  &__danger--withoutbackground {
+.orderalert {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 1.4rem 2rem;
+
+  &__danger {
     color: #eb1515d5;
   }
 }

@@ -37,6 +37,8 @@ class LoginForm extends Form {
   };
 
   render() {
+    document.title = "تولیدی پوشاک ملینا ترشیز | ورود ";
+
     return (
       <Fragment>
         <NavBar />

@@ -9,6 +9,7 @@ import RegisterForm from "./components/registerForm";
 import OrderJacketForm from "./components/orderJacketForm";
 import OrderShirtForm from "./components/orderShirtForm";
 import OrderPantsForm from "./components/orderPantsForm";
+import OrderScarfForm from "./components/orderScarfFrom";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/order-jacket" component={OrderJacketForm} />
           <Route path="/order-shirt" component={OrderShirtForm} />
           <Route path="/order-pants" component={OrderPantsForm} />
+          <Route path="/order-scarf" component={OrderScarfForm} />
 
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

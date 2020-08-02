@@ -1,13 +1,13 @@
 import React from "react";
 import icons from "../../img/sprite.svg";
 
-const Icon = (props) => (
+const Icon = ({ name, className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    className={`feature__icon`}
+    className={className}
   >
-    <use xlinkHref={`${icons}#${props.name}`} />
+    <use xlinkHref={`${icons}#${name}`} />
   </svg>
 );
 

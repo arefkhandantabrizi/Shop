@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Logo from "../img/logo.png";
+import Icon from "./common/icon";
 
 class NavBar extends Component {
   render() {
@@ -26,9 +27,14 @@ class NavBar extends Component {
               ورود
             </NavLink>
           </li>
-          <li className="nav__item">
+          <li className="nav__item nav__item--order">
             <NavLink className="nav__link" to={this.props.routeto}>
               سفارش لباس
+            </NavLink>
+          </li>
+          <li className="nav__item">
+            <NavLink className="nav__link" to="#">
+              <Icon name="icon-cart" className="nav__icon" />
             </NavLink>
           </li>
         </ul>

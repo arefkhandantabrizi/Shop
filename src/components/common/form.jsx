@@ -379,6 +379,13 @@ class Form extends Component {
       case '"pantsQuantity" must be less than or equal to 10':
         return "تعداد شلوار باید کمتر یا مساوی ۱۰ باشد ";
 
+      case '"scarfQuantity" must be a number':
+        return "تعداد مقنعه باید مقداری عددی داشته باشد";
+      case '"scarfQuantity" must be larger than or equal to 1':
+        return "تعداد مقنعه باید بزرگتر یا مساوی ۱ باشد";
+      case '"scarfQuantity" must be less than or equal to 10':
+        return "تعداد مقنعه باید کمتر یا مساوی ۱۰ باشد ";
+
       // case `"نام کاربری" with value ${this.state.data.username} fails to match the required pattern: /[0-9]{10}/`:
       //   return "نام کاربری باید مطابق شماره ملی باشد";
 

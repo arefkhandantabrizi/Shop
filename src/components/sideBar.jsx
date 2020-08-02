@@ -117,7 +117,7 @@ class SideBar extends Component {
             id="scarf"
             className={this.props.class4}
           >
-            <Link className="side-nav__link" to="#">
+            <Link className="side-nav__link" to="/order-scarf">
               مقنعه
             </Link>
           </li>
@@ -127,15 +127,6 @@ class SideBar extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     activeClass: state.entities.bugs.sidebar.activeClass,
-//     class1: state.entities.bugs.sidebar.class1,
-//     class2: state.entities.bugs.sidebar.class2,
-//     class3: state.entities.bugs.sidebar.class3,
-//     class4: state.entities.bugs.sidebar.class4,
-//   };
-// }
 const mapStateToProps = (state) => {
   return {
     activeClass: state.entities.bugs.sidebar.activeClass,

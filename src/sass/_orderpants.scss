@@ -1,18 +1,24 @@
 .orderpants {
   grid-column: sidebar-end / full-end;
   padding: 1rem 3rem;
+  background-color: rgba($color-grey-light-1, 0.5);
 
   &__form {
+    background-color: rgba($color-grey-light-1, 0.5);
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
   &__heading {
+    background-color: rgba($color-grey-light-1, 0.5);
+
     padding: 2rem 3rem;
   }
 
   &__input {
-    margin-right: 3rem;
+    grid-row: 1 / span 4;
+    grid-column: 1 / span 1;
     font-size: 1.5rem;
     font-family: inherit;
     color: inherit;
@@ -21,7 +27,7 @@
     background-color: rgba($color-grey-light-1, 0.5);
     border: none;
     border-bottom: 3px solid transparent;
-    width: 40%;
+    width: 70%;
     display: block;
     transition: all 0.3s;
 
@@ -70,14 +76,7 @@
     visibility: hidden;
     transform: translateY(-8rem);
   }
-  &__btn {
-    margin-right: 2rem;
-    grid-column: 1 / span 1;
-    padding: 1rem 3rem;
-    margin-bottom: 3rem;
-    justify-self: start;
-    align-self: start;
-  }
+
   &__extra {
     grid-row: 1 / span 3;
     grid-column: 2 / span 1;

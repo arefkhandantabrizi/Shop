@@ -27,7 +27,7 @@ class OrderShirtForm extends Form {
     shirtHeight: Joi.number().min(45).max(75).required().label("shirtHeight"),
     shirtShoulder: Joi.number()
       .min(28)
-      .max(48)
+      .max(45)
       .required()
       .label("shirtShoulder"),
     shirtHip: Joi.number().min(70).max(125).required().label("shirtHip"),
@@ -53,6 +53,8 @@ class OrderShirtForm extends Form {
   };
 
   render() {
+    document.title = "تولیدی پوشاک ملینا ترشیز|‌سفارش بلوز";
+
     return (
       <Fragment>
         <NavBar />
@@ -62,62 +64,63 @@ class OrderShirtForm extends Form {
             سفارش بلوز
           </h1>
           <form onSubmit={this.handleSubmit} className="orderjacket__form">
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-1",
-              "6",
-              "shirtHeight",
-              "قد بلوز",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-2",
-              "6",
-              "shirtChest",
-              "دور سینه",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-3",
-              "6",
-              "shirtHip",
-              "دور باسن",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-4",
-              "6",
-              "shirtSleeve",
-              "قد آستین",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-5",
-              "6",
-              "shirtShoulder",
-              "تمام شانه",
-              "text",
-              "orderjacket__input"
-            )}
-            {this.renderInputOrder(
-              "orderjacket__label",
-              "form__group orderjacket__input-6",
-              "2",
-              "shirtQuantity",
-              "تعداد",
-              "number",
-              "orderjacket__input"
-            )}
-            {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
-
+            <div className="orderjacket__input">
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-1",
+                "6",
+                "shirtHeight",
+                "قد بلوز",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-2",
+                "6",
+                "shirtChest",
+                "دور سینه",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-3",
+                "6",
+                "shirtHip",
+                "دور باسن",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-4",
+                "6",
+                "shirtSleeve",
+                "قد آستین",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-5",
+                "6",
+                "shirtShoulder",
+                "تمام شانه",
+                "text",
+                "orderjacket__input"
+              )}
+              {this.renderInputOrder(
+                "orderjacket__label",
+                "form__group orderjacket__input-6",
+                "2",
+                "shirtQuantity",
+                "تعداد",
+                "number",
+                "orderjacket__input"
+              )}
+              {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
+            </div>
             {this.state.imageSource && (
               <div className="orderjacket__extra">
                 <img

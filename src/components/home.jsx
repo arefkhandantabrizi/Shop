@@ -6,6 +6,8 @@ import NavBar from "./navBar";
 import Footer from "./footer";
 
 const Home = () => {
+  document.title = "تولیدی پوشاک ملینا ترشیز | صفحه اصلی";
+
   return (
     <React.Fragment>
       <NavBar />

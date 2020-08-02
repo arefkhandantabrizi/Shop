@@ -46,6 +46,8 @@ class RegisterForm extends Form {
   };
 
   render() {
+    document.title = "تولیدی پوشاک ملینا ترشیز |‌ ثبت نام ";
+
     return (
       <Fragment>
         <NavBar />

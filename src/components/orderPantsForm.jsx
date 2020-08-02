@@ -45,6 +45,8 @@ class OrderPantsForm extends Form {
   };
 
   render() {
+    document.title = "تولیدی پوشاک ملینا ترشیز|سفارش شلوار";
+
     return (
       <Fragment>
         <NavBar />
@@ -54,44 +56,45 @@ class OrderPantsForm extends Form {
             سفارش شلوار
           </h1>
           <form onSubmit={this.handleSubmit} className="orderpants__form">
-            {this.renderInputOrder(
-              "orderpants__label",
-              "form__group orderpants__input-1",
-              "6",
-              "pantsHeight",
-              "قد شلوار",
-              "text",
-              "orderpants__input"
-            )}
-            {this.renderInputOrder(
-              "orderpants__label",
-              "form__group orderpants__input-2",
-              "6",
-              "pantsHip",
-              "دور باسن",
-              "text",
-              "orderpants__input"
-            )}
-            {this.renderInputOrder(
-              "orderpants__label",
-              "form__group orderpants__input-3",
-              "6",
-              "pantsLeg",
-              "دور ران",
-              "text",
-              "orderpants__input"
-            )}
-            {this.renderInputOrder(
-              "orderpants__label",
-              "form__group orderpants__input-4",
-              "2",
-              "pantsQuantity",
-              "تعداد",
-              "number",
-              "orderpants__input"
-            )}
-            {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
-
+            <div className="orderpants__input">
+              {this.renderInputOrder(
+                "orderpants__label",
+                "form__group orderpants__input-1",
+                "6",
+                "pantsHeight",
+                "قد شلوار",
+                "text",
+                "orderpants__input"
+              )}
+              {this.renderInputOrder(
+                "orderpants__label",
+                "form__group orderpants__input-2",
+                "6",
+                "pantsHip",
+                "دور باسن",
+                "text",
+                "orderpants__input"
+              )}
+              {this.renderInputOrder(
+                "orderpants__label",
+                "form__group orderpants__input-3",
+                "6",
+                "pantsLeg",
+                "دور ران",
+                "text",
+                "orderpants__input"
+              )}
+              {this.renderInputOrder(
+                "orderpants__label",
+                "form__group orderpants__input-4",
+                "2",
+                "pantsQuantity",
+                "تعداد",
+                "number",
+                "orderpants__input"
+              )}
+              {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
+            </div>
             {this.state.imageSource && (
               <div className="orderjacket__extra">
                 <img

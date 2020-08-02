@@ -38,6 +38,7 @@ body {
   direction: rtl; }
 
 .container {
+  background-color: rgba(249, 247, 246, 0.5);
   display: grid;
   grid-template-rows: min-content minmax(80vh, max-content);
   grid-template-columns: [sidebar-start] 12rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
@@ -202,6 +203,7 @@ body {
     padding-right: 1.5rem;
     padding-left: 1.5rem; }
   .nav__item:last-child {
+    align-self: center;
     padding-right: 1.5rem; }
   .nav__item:first-child {
     padding-right: 2rem; }
@@ -209,6 +211,8 @@ body {
     transition: all 0.15s; }
   .nav__item:not(:first-child):hover {
     transform: translateY(-3px); }
+  .nav__item--order {
+    margin-left: auto; }
   .nav__link:link, .nav__link:visited {
     text-decoration: none;
     color: #f9f7f6; }
@@ -216,6 +220,11 @@ body {
     height: 5rem;
     width: 6rem;
     outline-width: thick; }
+  .nav__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #f9f7f6;
+    margin-left: 5rem; }
 
 .gallery {
   background-color: #f9f7f6;
@@ -417,14 +426,18 @@ body {
     opacity: 1; }
 
 .alert {
-  width: 80%;
+  width: 100%;
   font-size: 1.3rem;
   margin-right: 3rem;
   padding: 1.4rem 2rem; }
   .alert__danger {
-    color: #eb1515d5;
-    background-color: #fad7d7; }
-  .alert__danger--withoutbackground {
+    color: #eb1515d5; }
+
+.orderalert {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 1.4rem 2rem; }
+  .orderalert__danger {
     color: #eb1515d5; }
 
 .rounded-pill {
@@ -574,23 +587,27 @@ body {
 
 .orderjacket {
   grid-column: sidebar-end / full-end;
-  padding: 1rem 3rem; }
+  padding: 1rem 3rem;
+  background-color: rgba(249, 247, 246, 0.5); }
   .orderjacket__form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); }
+    grid-template-columns: repeat(2, 1fr);
+    background-color: rgba(249, 247, 246, 0.5); }
   .orderjacket__heading {
-    padding: 2rem 3rem; }
+    padding: 2rem 3rem;
+    background-color: rgba(249, 247, 246, 0.5); }
   .orderjacket__input {
-    margin-right: 3rem;
+    background-color: rgba(249, 247, 246, 0.5);
+    grid-row: 1 / span 4;
+    grid-column: 1 / span 1;
     font-size: 1.5rem;
     font-family: inherit;
     color: inherit;
     padding: 1.5rem 2rem;
     border-radius: 3rem;
-    background-color: rgba(249, 247, 246, 0.5);
     border: none;
     border-bottom: 3px solid transparent;
-    width: 40%;
+    width: 70%;
     display: block;
     transition: all 0.3s; }
     .orderjacket__input:focus {
@@ -615,13 +632,11 @@ body {
       grid-column: 1 / span 1; }
   .orderjacket__label {
     position: absolute;
-    top: 105%;
-    right: 3rem;
     transform: translateY(-50%);
     font-size: 1.4rem;
     font-weight: 400;
     margin-right: 2rem;
-    margin-top: 0.7rem;
+    margin-top: 1rem;
     display: block;
     transition: all 0.3s; }
   .orderjacket__input:placeholder-shown + .orderjacket__label {
@@ -629,30 +644,34 @@ body {
     visibility: hidden;
     transform: translateY(-8rem); }
   .orderjacket__btn {
-    margin-right: 2rem;
     grid-column: 1 / span 1;
     padding: 1rem 3rem;
     margin-bottom: 3rem;
     justify-self: start;
     align-self: start; }
-  .orderjacket__extra {
-    grid-row: 1 / span 4;
-    grid-column: 2 / span 1;
-    display: grid;
-    grid-template-columns: 1fr; }
-    .orderjacket__extra--image {
-      width: 40%; }
+  .orderjacket__extra--image {
+    grid-row: 1 / span 3;
+    padding: 2rem 4rem;
+    width: 45%; }
+  .orderjacket__extra--text {
+    width: 45%;
+    font-size: 1.4rem;
+    padding: 2rem 4rem; }
 
 .orderpants {
   grid-column: sidebar-end / full-end;
-  padding: 1rem 3rem; }
+  padding: 1rem 3rem;
+  background-color: rgba(249, 247, 246, 0.5); }
   .orderpants__form {
+    background-color: rgba(249, 247, 246, 0.5);
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
   .orderpants__heading {
+    background-color: rgba(249, 247, 246, 0.5);
     padding: 2rem 3rem; }
   .orderpants__input {
-    margin-right: 3rem;
+    grid-row: 1 / span 4;
+    grid-column: 1 / span 1;
     font-size: 1.5rem;
     font-family: inherit;
     color: inherit;
@@ -661,7 +680,7 @@ body {
     background-color: rgba(249, 247, 246, 0.5);
     border: none;
     border-bottom: 3px solid transparent;
-    width: 40%;
+    width: 70%;
     display: block;
     transition: all 0.3s; }
     .orderpants__input:focus {
@@ -695,13 +714,6 @@ body {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8rem); }
-  .orderpants__btn {
-    margin-right: 2rem;
-    grid-column: 1 / span 1;
-    padding: 1rem 3rem;
-    margin-bottom: 3rem;
-    justify-self: start;
-    align-self: start; }
   .orderpants__extra {
     grid-row: 1 / span 3;
     grid-column: 2 / span 1;
@@ -709,3 +721,50 @@ body {
     grid-template-columns: 1fr; }
     .orderpants__extra--image {
       width: 40%; }
+
+.orderscarf {
+  grid-column: sidebar-end / full-end;
+  padding: 1rem 3rem;
+  background-color: rgba(249, 247, 246, 0.5); }
+  .orderscarf__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: rgba(249, 247, 246, 0.5); }
+  .orderscarf__heading {
+    padding: 2rem 3rem;
+    background-color: rgba(249, 247, 246, 0.5); }
+  .orderscarf__input {
+    background-color: rgba(249, 247, 246, 0.5);
+    grid-row: 1 / -1;
+    grid-column: 1 / span 1;
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 3rem;
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 70%;
+    display: block;
+    transition: all 0.3s; }
+    .orderscarf__input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(249, 247, 246, 0.1);
+      border-bottom: 3px solid #c69963; }
+    .orderscarf__input:focus:invalid {
+      border-bottom: 3px solid #101d2c; }
+    .orderscarf__input::-webkit-input-placeholder {
+      color: #6d5d4b; }
+  .orderscarf__label {
+    position: absolute;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    display: block;
+    transition: all 0.3s; }
+  .orderscarf__input:placeholder-shown + .orderscarf__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8rem); }
