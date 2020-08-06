@@ -36,9 +36,11 @@ class OrderScarfFrom extends Form {
       name: "مقنعه",
     });
     this.props.totalOrdered({});
-    if (this.state.data.scarfQuantity === "0")
+    const count = this.props.orderList.map((order) => order.name === "مقنعه");
+    if (this.state.data.scarfQuantity === "0" && count.length === 1)
       toast("مقنعه از سبد خرید حذف شد");
-    else toast("مقنعه به سبد خرید اضافه شد");
+    else if (parseInt(this.state.data.scarfQuantity) !== 0)
+      toast("مقنعه به سبد خرید اضافه شد");
   };
 
   render() {
@@ -75,6 +77,7 @@ class OrderScarfFrom extends Form {
 
 const mapStateToProps = (state) => {
   return {
+    orderList: state.entities.orders.list,
     scarfQuantity: state.entities.orders.items.scarf.quantity,
     price: state.entities.orders.items.scarf.price,
     userSchool: state.entities.users.data.schoolname,

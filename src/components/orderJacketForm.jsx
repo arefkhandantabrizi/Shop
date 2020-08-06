@@ -59,9 +59,11 @@ class OrderJacketForm extends Form {
       name: "مانتو",
     });
     this.props.totalOrdered({});
-    if (this.state.data.jacketQuantity === "0")
+    const count = this.props.orderList.map((order) => order.name === "مانتو");
+    if (this.state.data.jacketQuantity === "0" && count.length === 1)
       toast("مانتو از سبد خرید حذف شد");
-    else toast("مانتو به سبد خرید اضافه شد");
+    else if (parseInt(this.state.data.jacketQuantity) !== 0)
+      toast("مانتو به سبد خرید اضافه شد");
   };
 
   render() {

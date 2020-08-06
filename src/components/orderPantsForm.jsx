@@ -50,9 +50,11 @@ class OrderPantsForm extends Form {
       name: "شلوار",
     });
     this.props.totalOrdered({});
-    if (this.state.data.pantsQuantity === "0")
+    const count = this.props.orderList.map((order) => order.name === "شلوار");
+    if (this.state.data.pantsQuantity === "0" && count.length === 1)
       toast("شلوار از سبد خرید حذف شد");
-    else toast("شلوار به سبد خرید اضافه شد");
+    else if (parseInt(this.state.data.pantsQuantity) !== 0)
+      toast("شلوار به سبد خرید اضافه شد");
   };
 
   render() {
