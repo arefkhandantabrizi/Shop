@@ -17,26 +17,50 @@ class NavBar extends Component {
               صفحه اصلی
             </NavLink>
           </li>
-          {/* <li className="nav__item">
-        <NavLink className="nav__link" to="/register">
-          ثبت نام
-        </NavLink>
-      </li> */}
-          <li className="nav__item">
-            <NavLink className="nav__link" to="/login">
-              ورود
-            </NavLink>
-          </li>
-          <li className="nav__item nav__item--order">
-            <NavLink className="nav__link" to={this.props.routeto}>
-              سفارش لباس
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink className="nav__link" to="#">
-              <Icon name="icon-cart" className="nav__icon" />
-            </NavLink>
-          </li>
+          {!this.props.submited && (
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/login">
+                ورود
+              </NavLink>
+            </li>
+          )}
+          {this.props.submited && (
+            <li className="nav__item nav__item--order">
+              <NavLink className="nav__link" to={this.props.routeto}>
+                سفارش لباس
+              </NavLink>
+            </li>
+          )}
+          {!this.props.submited && (
+            <li className="nav__item nav__item--order">
+              <NavLink className="nav__link" to="/login">
+                سفارش لباس
+              </NavLink>
+            </li>
+          )}
+
+          {this.props.submited && this.props.gender === "Male" && (
+            <li className="nav__item nav__item--user">
+              <NavLink className="nav__link" to="#">
+                <Icon
+                  name="icon-profile-male"
+                  className="nav__icon nav__icon--user"
+                />
+                {this.props.name}{" "}
+                <span className="nav__item--user"> عزیز خوش آمدید</span>
+              </NavLink>
+            </li>
+          )}
+          {this.props.submited && (
+            <li className="nav__item">
+              <NavLink className="nav__link" to="/cart">
+                <Icon name="icon-cart" className="nav__icon nav__icon--cart" />
+                <span className="cart__notification">
+                  {this.props.totalCount}
+                </span>
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     );
@@ -46,6 +70,10 @@ class NavBar extends Component {
 const mapStateToProps = (state) => {
   return {
     routeto: state.entities.bugs.sidebar.routeto,
+    submited: state.entities.users.submited,
+    gender: state.entities.users.data.gender,
+    name: state.entities.users.data.name,
+    totalCount: state.entities.orders.totalCount,
   };
 };
 

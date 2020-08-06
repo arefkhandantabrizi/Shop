@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import bugReducer from "./bugs";
-import projectReducer from "./projects";
+import schoolReducer from "./school";
 import userReducer from "./users";
+import orderReducer from "./order";
+import invoiceReducer from "./invoice";
 
 export default combineReducers({
   bugs: bugReducer,
-  projcets: projectReducer,
+  schools: schoolReducer,
   users: userReducer,
+  orders: orderReducer,
+  invoices: invoiceReducer,
 });

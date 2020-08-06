@@ -1,47 +1,58 @@
 import React, { Fragment } from "react";
 import Joi from "joi-browser";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { toast } from "react-toastify";
 import Footer from "./footer";
 import NavBar from "./navBar";
 import SideBar from "./sideBar";
 import Form from "./common/form";
+import { pantsAdded, totalOrdered } from "../store/order";
+import calPricePants from "../utils/calPricePants";
 
 class OrderPantsForm extends Form {
   state = {
     data: {
-      pantsHeight: "",
-      pantsHip: "",
-      pantsLeg: "",
-      pantsQuantity: "",
+      pantsHeight: this.props.pantsHeight,
+      pantsHip: this.props.pantsHip,
+      pantsLeg: this.props.pantsLeg,
+      pantsQuantity: this.props.pantsQuantity,
     },
     imageSource: "",
     textSource: "",
+    price: "",
     errors: {},
   };
 
   schema = {
-    pantsHeight: Joi.number().min(60).max(110).required().label("pantsHeight"),
-    pantsLeg: Joi.number().min(45).max(75).required().label("pantsLeg"),
-    pantsHip: Joi.number().min(70).max(125).required().label("pantsHip"),
+    pantsHeight: Joi.number().min(60).max(120).required().label("pantsHeight"),
+    pantsLeg: Joi.number().min(45).required().label("pantsLeg"),
+    pantsHip: Joi.number().min(70).required().label("pantsHip"),
     pantsQuantity: Joi.number()
-      .min(1)
+      .min(0)
       .max(10)
       .required()
       .label("pantsQuantity"),
   };
 
-  doSubmitt = async () => {
-    // try {
-    //   const { data } = this.state;
-    //   await auth.login(data.username, data.password);
-    //   window.location = "/";
-    // } catch (ex) {
-    //   if (ex.response && ex.response.status === 400) {
-    //     const errors = { ...this.state.errors };
-    //     errors.username = ex.response.data;
-    //     this.setState({ errors });
-    //   }
-    // }
+  doSubmitt = () => {
+    let price = calPricePants(
+      this.state.data.pantsHeight,
+      this.props.userSchool
+    );
+    price = price * parseInt(this.state.data.pantsQuantity);
+    this.props.pantsAdded({
+      pantsHeight: this.state.data.pantsHeight,
+      pantsLeg: this.state.data.pantsLeg,
+      pantsHip: this.state.data.pantsHip,
+      quantity: this.state.data.pantsQuantity,
+      price,
+      name: "شلوار",
+    });
+    this.props.totalOrdered({});
+    if (this.state.data.pantsQuantity === "0")
+      toast("شلوار از سبد خرید حذف شد");
+    else toast("شلوار به سبد خرید اضافه شد");
   };
 
   render() {
@@ -114,5 +125,19 @@ class OrderPantsForm extends Form {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    pantsHeight: state.entities.orders.items.pants.height,
+    pantsHip: state.entities.orders.items.pants.hip,
+    pantsLeg: state.entities.orders.items.pants.leg,
+    pantsQuantity: state.entities.orders.items.pants.quantity,
+    price: state.entities.orders.items.pants.price,
+    userSchool: state.entities.users.data.schoolname,
+  };
+};
 
-export default OrderPantsForm;
+const matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({ pantsAdded, totalOrdered }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(OrderPantsForm);

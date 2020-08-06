@@ -4,6 +4,22 @@
   grid-row: 1 / 2;
 }
 
+.cart__notification {
+  font-size: 0.8rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 50%;
+  background-color: #e40606;
+  color: $color-white;
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .nav {
   list-style: none;
   display: flex;
@@ -38,8 +54,13 @@
     margin-left: auto;
   }
 
+  &__item--user {
+    transform: translateY(-0.5rem);
+  }
+
   &__link:link,
   &__link:visited {
+    position: relative;
     text-decoration: none;
     color: $color-grey-light-1;
   }
@@ -54,6 +75,8 @@
     width: 2.5rem;
     height: 2.5rem;
     fill: $color-grey-light-1;
-    margin-left: 5rem;
+    &--cart {
+      margin-left: 5rem;
+    }
   }
 }

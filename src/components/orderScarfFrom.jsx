@@ -1,15 +1,19 @@
 import React, { Fragment } from "react";
 import Joi from "joi-browser";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { toast } from "react-toastify";
 import Footer from "./footer";
 import NavBar from "./navBar";
 import SideBar from "./sideBar";
 import Form from "./common/form";
+import { scarfAdded, totalOrdered } from "../store/order";
+import calPriceScarf from "../utils/calPriceScarf";
 
 class OrderScarfFrom extends Form {
   state = {
     data: {
-      scarfQuantity: "",
+      scarfQuantity: this.props.scarfQuantity,
     },
 
     errors: {},
@@ -17,24 +21,24 @@ class OrderScarfFrom extends Form {
 
   schema = {
     scarfQuantity: Joi.number()
-      .min(1)
+      .min(0)
       .max(10)
       .required()
       .label("scarfQuantity"),
   };
 
-  doSubmitt = async () => {
-    // try {
-    //   const { data } = this.state;
-    //   await auth.login(data.username, data.password);
-    //   window.location = "/";
-    // } catch (ex) {
-    //   if (ex.response && ex.response.status === 400) {
-    //     const errors = { ...this.state.errors };
-    //     errors.username = ex.response.data;
-    //     this.setState({ errors });
-    //   }
-    // }
+  doSubmitt = () => {
+    let price = calPriceScarf(this.props.userSchool);
+    price = price * parseInt(this.state.data.scarfQuantity);
+    this.props.scarfAdded({
+      quantity: this.state.data.scarfQuantity,
+      price,
+      name: "مقنعه",
+    });
+    this.props.totalOrdered({});
+    if (this.state.data.scarfQuantity === "0")
+      toast("مقنعه از سبد خرید حذف شد");
+    else toast("مقنعه به سبد خرید اضافه شد");
   };
 
   render() {
@@ -69,4 +73,16 @@ class OrderScarfFrom extends Form {
   }
 }
 
-export default OrderScarfFrom;
+const mapStateToProps = (state) => {
+  return {
+    scarfQuantity: state.entities.orders.items.scarf.quantity,
+    price: state.entities.orders.items.scarf.price,
+    userSchool: state.entities.users.data.schoolname,
+  };
+};
+
+const matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({ scarfAdded, totalOrdered }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(OrderScarfFrom);

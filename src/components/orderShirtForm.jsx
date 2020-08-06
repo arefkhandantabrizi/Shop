@@ -1,20 +1,24 @@
 import React, { Fragment } from "react";
 import Joi from "joi-browser";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { toast } from "react-toastify";
 import Footer from "./footer";
 import NavBar from "./navBar";
 import SideBar from "./sideBar";
 import Form from "./common/form";
+import { shirtAdded, totalOrdered } from "../store/order";
+import calPriceShirtAndJacket from "../utils/calPriceShirtAndJacket";
 
 class OrderShirtForm extends Form {
   state = {
     data: {
-      shirtHeight: "",
-      shirtChest: "",
-      shirtHip: "",
-      shirtSleeve: "",
-      shirtShoulder: "",
-      shirtQuantity: "",
+      shirtHeight: this.props.shirtHeight,
+      shirtChest: this.props.shirtChest,
+      shirtHip: this.props.shirtHip,
+      shirtSleeve: this.props.shirtSleeve,
+      shirtShoulder: this.props.shirtShoulder,
+      shirtQuantity: this.props.shirtQuantity,
     },
     imageSource: "",
     textSource: "",
@@ -32,24 +36,31 @@ class OrderShirtForm extends Form {
       .label("shirtShoulder"),
     shirtHip: Joi.number().min(70).max(125).required().label("shirtHip"),
     shirtQuantity: Joi.number()
-      .min(1)
+      .min(0)
       .max(10)
       .required()
       .label("shirtQuantity"),
   };
 
-  doSubmitt = async () => {
-    // try {
-    //   const { data } = this.state;
-    //   await auth.login(data.username, data.password);
-    //   window.location = "/";
-    // } catch (ex) {
-    //   if (ex.response && ex.response.status === 400) {
-    //     const errors = { ...this.state.errors };
-    //     errors.username = ex.response.data;
-    //     this.setState({ errors });
-    //   }
-    // }
+  doSubmitt = () => {
+    let price = calPriceShirtAndJacket(
+      this.state.data.shirtHeight,
+      this.props.userSchool
+    );
+    price = price * parseInt(this.state.data.shirtQuantity);
+    this.props.shirtAdded({
+      shirtHeight: this.state.data.shirtHeight,
+      shirtChest: this.state.data.shirtChest,
+      shirtHip: this.state.data.shirtHip,
+      shirtShoulder: this.state.data.shirtShoulder,
+      shirtSleeve: this.state.data.shirtSleeve,
+      quantity: this.state.data.shirtQuantity,
+      price,
+      name: "بلوز",
+    });
+    this.props.totalOrdered({});
+    if (this.state.data.shirtQuantity === "0") toast("بلوز از سبد خرید حذف شد");
+    else toast("بلوز به سبد خرید اضافه شد");
   };
 
   render() {
@@ -140,5 +151,21 @@ class OrderShirtForm extends Form {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    shirtHeight: state.entities.orders.items.shirt.height,
+    shirtChest: state.entities.orders.items.shirt.chest,
+    shirtHip: state.entities.orders.items.shirt.hip,
+    shirtQuantity: state.entities.orders.items.shirt.quantity,
+    shirtShoulder: state.entities.orders.items.shirt.shoulder,
+    shirtSleeve: state.entities.orders.items.shirt.sleeve,
+    price: state.entities.orders.items.shirt.price,
+    userSchool: state.entities.users.data.schoolname,
+  };
+};
 
-export default OrderShirtForm;
+const matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({ shirtAdded, totalOrdered }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(OrderShirtForm);

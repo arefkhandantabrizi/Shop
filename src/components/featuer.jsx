@@ -18,7 +18,7 @@ const Feature = () => {
         <h4 className="heading-4 heading-4--dark">تحویل به موقع و منظم</h4>
         <p className="feature__text">
           وقت شما برای ما ارزشمند است. تحویل به موقع لباس فرم، وظیفه ای است که
-          ما به آن پایندیم.
+          ما به آن پایبندیم.
         </p>
       </div>
 

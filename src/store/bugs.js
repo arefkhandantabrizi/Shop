@@ -40,13 +40,20 @@ const slice = createSlice({
     },
 
     bugAdded: (bugs, action) => {
-      bugs.list.push(action.payload);
-      bugs.sidebar.activename = action.payload.activeClass;
-      bugs.sidebar.routeto = action.payload.routeto;
-      bugs.sidebar.class1 = action.payload.class1;
-      bugs.sidebar.class2 = action.payload.class2;
-      bugs.sidebar.class3 = action.payload.class3;
-      bugs.sidebar.class4 = action.payload.class4;
+      const {
+        activeClass,
+        routeto,
+        class1,
+        class2,
+        class3,
+        class4,
+      } = action.payload;
+      bugs.sidebar.activename = activeClass;
+      bugs.sidebar.routeto = routeto;
+      bugs.sidebar.class1 = class1;
+      bugs.sidebar.class2 = class2;
+      bugs.sidebar.class3 = class3;
+      bugs.sidebar.class4 = class4;
     },
 
     bugResolved: (bugs, action) => {

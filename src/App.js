@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
 import Home from "./components/home";
 import AccessDenied from "./components/accessDenied";
 import NotFound from "./components/notFound";
@@ -10,10 +10,13 @@ import OrderJacketForm from "./components/orderJacketForm";
 import OrderShirtForm from "./components/orderShirtForm";
 import OrderPantsForm from "./components/orderPantsForm";
 import OrderScarfForm from "./components/orderScarfFrom";
+import Cart from "./components/cart";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <React.Fragment>
+      <ToastContainer />
       <div className="container">
         <Switch>
           <Route path="/home" component={Home} />
@@ -25,6 +28,7 @@ function App() {
           <Route path="/order-shirt" component={OrderShirtForm} />
           <Route path="/order-pants" component={OrderPantsForm} />
           <Route path="/order-scarf" component={OrderScarfForm} />
+          <Route path="/cart" component={Cart} />
 
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

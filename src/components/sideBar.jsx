@@ -15,7 +15,6 @@ class SideBar extends Component {
         if (this.props.activeClass !== id) {
           Class1 += " side-nav__item--active";
           this.props.bugAdded({
-            description: id,
             routeto: "/order-jacket",
             activeClass,
             class1: Class1,
@@ -32,7 +31,6 @@ class SideBar extends Component {
         if (this.props.activeClass !== id) {
           Class2 += " side-nav__item--active";
           this.props.bugAdded({
-            description: id,
             routeto: "/order-pants",
             activeClass,
             class1: simple,
@@ -48,7 +46,6 @@ class SideBar extends Component {
         if (this.props.activeClass !== id) {
           Class3 += " side-nav__item--active";
           this.props.bugAdded({
-            description: id,
             routeto: "/order-shirt",
             activeClass,
             class1: simple,
@@ -65,7 +62,6 @@ class SideBar extends Component {
         if (this.props.activeClass !== id) {
           Class4 += " side-nav__item--active";
           this.props.bugAdded({
-            description: id,
             routeto: "/order-scarf",
             activeClass,
             class1: simple,
@@ -85,15 +81,29 @@ class SideBar extends Component {
     return (
       <div className="sidebar">
         <ul className="side-nav">
-          <li
-            id="jacket"
-            onClick={this.handleClick}
-            className={this.props.class1}
-          >
-            <Link className="side-nav__link" to="/order-jacket">
-              مانتو
-            </Link>
-          </li>
+          {this.props.gender === "Female" && (
+            <li
+              id="jacket"
+              onClick={this.handleClick}
+              className={this.props.class1}
+            >
+              <Link className="side-nav__link" to="/order-jacket">
+                مانتو
+              </Link>
+            </li>
+          )}
+
+          {this.props.gender === "Male" && (
+            <li
+              onClick={this.handleClick}
+              id="shirt"
+              className={this.props.class3}
+            >
+              <Link className="side-nav__link" to="/order-shirt">
+                بلوز
+              </Link>
+            </li>
+          )}
           <li
             onClick={this.handleClick}
             id="pants"
@@ -103,24 +113,17 @@ class SideBar extends Component {
               شلوار
             </Link>
           </li>
-          <li
-            onClick={this.handleClick}
-            id="shirt"
-            className={this.props.class3}
-          >
-            <Link className="side-nav__link" to="/order-shirt">
-              بلوز
-            </Link>
-          </li>
-          <li
-            onClick={this.handleClick}
-            id="scarf"
-            className={this.props.class4}
-          >
-            <Link className="side-nav__link" to="/order-scarf">
-              مقنعه
-            </Link>
-          </li>
+          {this.props.gender === "Female" && (
+            <li
+              onClick={this.handleClick}
+              id="scarf"
+              className={this.props.class4}
+            >
+              <Link className="side-nav__link" to="/order-scarf">
+                مقنعه
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     );
@@ -135,6 +138,7 @@ const mapStateToProps = (state) => {
     class2: state.entities.bugs.sidebar.class2,
     class3: state.entities.bugs.sidebar.class3,
     class4: state.entities.bugs.sidebar.class4,
+    gender: state.entities.users.data.gender,
   };
 };
 

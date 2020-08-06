@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { connect } from "react-redux";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
@@ -6,11 +7,13 @@ import TextArea from "./textArea";
 import InputRegister from "./inputRegister";
 import TextAreaRegistration from "./textAreaRegistration";
 import InputOrder from "./inputOrder";
-import JacketHipPicture from "../../img/gal-1.jpg";
-import JacketShoulderPicture from "../../img/gal-2.jpg";
-import JacketHeightPicture from "../../img/gal-6.jpg";
-import JacketSleevePicture from "../../img/gal-4.jpg";
-import JacketChestPicture from "../../img/gal-5.jpg";
+import JacketHipPicture from "../../img/hip.jpg";
+import JacketShoulderPicture from "../../img/shoulder.jpg";
+import JacketHeightPicture from "../../img/jacketheight.jpg";
+import JacketSleevePicture from "../../img/sleeve.jpg";
+import JacketChestPicture from "../../img/chest.jpg";
+import PantsHeightPicture from "../../img/pantsheight.jpg";
+import PantsLegPicture from "../../img/leg.jpg";
 
 class Form extends Component {
   state = {
@@ -30,11 +33,17 @@ class Form extends Component {
     return errors;
   };
 
+  // onValueChange = (input) => {
+  //   console.log(input);
+  // };
+
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
+
+    // if (input.name === "schoolName") this.onValueChange(input);
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
@@ -43,21 +52,101 @@ class Form extends Component {
 
   handleClick = ({ currentTarget: input }) => {
     const { id } = input;
+    const jacketHeightText =
+      "ابتدای متر خیاطی را در کنار گردن قرار دهید. متر را از روی برجستگی سینه دانش آموز عبور دهید و عدد روی متر خیاطی را در محل مورد نظر (زیر زانو) بخوانید.";
+    const shirtHeightText =
+      "متر را کنار گردن گذاشته و قد لباس را تا برآمدگی انگشت شصت دانش آموز اندازه بگیرید. متداول است قد لباس فرم پسرانه تا انگشت شصت ایشان (زمانی که دست خود را کنار بدن قرار می دهند) اندازه گیری شود.";
+
+    const jacketChestText =
+      "ابتدا متر خیاطی را از زیر بغل تا روی برجستگی سینه قرار داده و آن را بین دوسینه به هم می رسانیم به گونه ای که سینه فشرده نشود و متر چرخش مختصری داشته باشد. لازم نیست متر خیاطی را خیلی آزاد و یا خیلی چسب بگیرید به طوری که فرم سینه تغییر کند";
+
+    const shirtChestText =
+      "ابتدا متر خیاطی را از زیر بغل تا روی برجستگی سینه قرار داده و آن را بین دوسینه به هم می رسانیم به گونه ای که سینه فشرده نشود و متر چرخش مختصری داشته باشد";
+
+    const hipText =
+      "متر را روی برجستگی باسن قرار داده و جلو اندام به هم حلقه کنید. دقت کنید. اگر دانش آموز شکم بزرگ تر از باسن دارد، متر خیاطی را پس از رد کردن از دور باسن، اندکی به سمت بالا بکشید تا جلوی متر به صورت مورب قرار بگیرد و حجم شکم را نیز شامل شود";
+
+    const sleeveText =
+      " دست را کمی خم کرده، ابتدای متر را روی نقطه برآمده سرشانه قرار داده و تا برآمدگی مچ اندازه گیری کنید";
+
+    const shoulderText =
+      "هنگام اندازه گیری تمام شانه ، از روی نقطه برآمدگی سرشانه چپ تا نقطه برآمدگی سر شانه راست را از پشت اندازه گیری کنید و اجازه دهید متر روی بدن به راحتی قرار بگیرد";
+
+    const pantsHeightText =
+      "از خطی که کمر شلوار مورد نظر قرار می گیرد تا قد دلخواه را اندازه گیری کنید. توصیه می کنیم قد شلوار را تا روی زمین اندازه گیری کنید که قد شلوار تا انتهای سال تحصیلی برای دانش آموز مناسب باشد.";
+
+    const pantLegText =
+      "دور برآمده ترین قسمت ران را اندازه گیری کنید. نه خیلی آزاد و نه خیلی چسب. متر باید اندکی چرخض داشته باشد";
+
     switch (id) {
       case "jacketHip":
-        this.setState({ imageSource: JacketHipPicture });
+        this.setState({ imageSource: JacketHipPicture, textSource: hipText });
         break;
       case "jacketChest":
-        this.setState({ imageSource: JacketChestPicture });
+        this.setState({
+          imageSource: JacketChestPicture,
+          textSource: jacketChestText,
+        });
         break;
       case "jacketSleeve":
-        this.setState({ imageSource: JacketSleevePicture });
+        this.setState({
+          imageSource: JacketSleevePicture,
+          textSource: sleeveText,
+        });
         break;
       case "jacketHeight":
-        this.setState({ imageSource: JacketHeightPicture });
+        this.setState({
+          imageSource: JacketHeightPicture,
+          textSource: jacketHeightText,
+        });
         break;
       case "jacketShoulder":
-        this.setState({ imageSource: JacketShoulderPicture });
+        this.setState({
+          imageSource: JacketShoulderPicture,
+          textSource: shoulderText,
+        });
+        break;
+      case "shirtHip":
+        this.setState({ imageSource: JacketHipPicture, textSource: hipText });
+        break;
+      case "shirtChest":
+        this.setState({
+          imageSource: JacketChestPicture,
+          textSource: shirtChestText,
+        });
+        break;
+      case "shirtSleeve":
+        this.setState({
+          imageSource: JacketSleevePicture,
+          textSource: sleeveText,
+        });
+        break;
+      case "shirtHeight":
+        this.setState({
+          imageSource: JacketHeightPicture,
+          textSource: shirtHeightText,
+        });
+        break;
+      case "shirtShoulder":
+        this.setState({
+          imageSource: JacketShoulderPicture,
+          textSource: shoulderText,
+        });
+        break;
+      case "pantsHeight":
+        this.setState({
+          imageSource: PantsHeightPicture,
+          textSource: pantsHeightText,
+        });
+        break;
+      case "pantsLeg":
+        this.setState({
+          imageSource: PantsLegPicture,
+          textSource: pantLegText,
+        });
+        break;
+      case "pantsHip":
+        this.setState({ imageSource: JacketHipPicture, textSource: hipText });
         break;
 
       default:
@@ -82,11 +171,23 @@ class Form extends Component {
     this.doSubmitt();
   };
 
-  renderSelect(name, label, options) {
+  renderSelect(
+    divClass,
+    labelClass,
+    className,
+    name,
+    label,
+    options,
+    multiple = false
+  ) {
     const { data, errors } = this.state;
 
     return (
       <Select
+        multiple={multiple}
+        divClass={divClass}
+        labelClass={labelClass}
+        className={className}
         name={name}
         value={data[name]}
         label={label}
@@ -252,6 +353,8 @@ class Form extends Component {
         return "نام و نام خانوادگی نمی تواند کمتر از ۳ کاراکتر باشد";
       case '"نام مدرسه" is not allowed to be empty':
         return "نام مدرسه نمی تواند خالی باشد";
+      case '"آدرس" is not allowed to be empty':
+        return "آدرس نمی تواند خالی باشد";
       case '"نام مدرسه" length must be at least 3 characters long':
         return "نام مدرسه نمی تواند کمتر از ۳ کاراکتر باشد";
       case '"نام" length must be at least 3 characters long':
@@ -262,10 +365,10 @@ class Form extends Component {
         return "نام کاربری باید عدد باشد";
       case '"نام کاربری" length must be 10 characters long':
         return "شماره وارد شده برای کد ملی صحیح نیست";
-      case '"تلفن همراه" length must be at least 11 characters long':
+      case '"تلفن" length must be at least 11 characters long':
         return "شماره تلفن صحیح نیست";
       case '"پایه تحصیلی" is not allowed to be empty':
-        return "پایه تحصیلی باید مقداری بین ۱ و ۶ داشته باشد";
+        return "پایه تحصیلی باید مقداری بین ۱ و ۱۲ داشته باشد";
 
       case '"jacketHeight" must be a number':
         return "قد مانتو باید مقداری عددی داشته باشد";
@@ -304,8 +407,8 @@ class Form extends Component {
 
       case '"jacketQuantity" must be a number':
         return "تعداد مانتو باید مقداری عددی داشته باشد";
-      case '"jacketQuantity" must be larger than or equal to 1':
-        return "تعداد مانتو باید بزرگتر یا مساوی ۱ باشد";
+      case '"jacketQuantity" must be larger than or equal to 0':
+        return "تعداد مانتو باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketQuantity" must be less than or equal to 10':
         return "تعداد مانتو باید کمتر یا مساوی ۱۰ باشد ";
 
@@ -346,8 +449,8 @@ class Form extends Component {
 
       case '"shirtQuantity" must be a number':
         return "تعداد بلوز باید مقداری عددی داشته باشد";
-      case '"shirtQuantity" must be larger than or equal to 1':
-        return "تعداد بلوز باید بزرگتر یا مساوی ۱ باشد";
+      case '"shirtQuantity" must be larger than or equal to 0':
+        return "تعداد بلوز باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtQuantity" must be less than or equal to 10':
         return "تعداد بلوز باید کمتر یا مساوی ۱۰ باشد ";
 
@@ -374,15 +477,15 @@ class Form extends Component {
 
       case '"pantsQuantity" must be a number':
         return "تعداد شلوار باید مقداری عددی داشته باشد";
-      case '"pantsQuantity" must be larger than or equal to 1':
-        return "تعداد شلوار باید بزرگتر یا مساوی ۱ باشد";
+      case '"pantsQuantity" must be larger than or equal to 0':
+        return "تعداد شلوار باید بزرگتر یا مساوی۰۱ باشد";
       case '"pantsQuantity" must be less than or equal to 10':
         return "تعداد شلوار باید کمتر یا مساوی ۱۰ باشد ";
 
       case '"scarfQuantity" must be a number':
         return "تعداد مقنعه باید مقداری عددی داشته باشد";
-      case '"scarfQuantity" must be larger than or equal to 1':
-        return "تعداد مقنعه باید بزرگتر یا مساوی ۱ باشد";
+      case '"scarfQuantity" must be larger than or equal to 0':
+        return "تعداد مقنعه باید بزرگتر یا مساوی ۰ باشد";
       case '"scarfQuantity" must be less than or equal to 10':
         return "تعداد مقنعه باید کمتر یا مساوی ۱۰ باشد ";
 
@@ -390,7 +493,7 @@ class Form extends Component {
       //   return "نام کاربری باید مطابق شماره ملی باشد";
 
       default:
-        console.log(error.details[0].message);
+        // console.log(error.details[0].message);
 
         return "مقدار وارد شده صحیح نمی باشد";
     }

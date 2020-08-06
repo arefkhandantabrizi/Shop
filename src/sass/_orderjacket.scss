@@ -98,14 +98,13 @@
   }
   &__extra {
     &--image {
-      grid-row: 1 / span 3;
+      grid-row: 1 / span 2;
       padding: 2rem 4rem;
 
-      width: 45%;
+      width: 38%;
     }
     &--text {
-      width: 45%;
-
+      text-align: justify;
       font-size: 1.4rem;
       padding: 2rem 4rem;
     }

@@ -1,20 +1,24 @@
 import React, { Fragment } from "react";
 import Joi from "joi-browser";
-// import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { toast } from "react-toastify";
 import Form from "./common/form";
 import NavBar from "./navBar";
 import Footer from "./footer";
 import SideBar from "./sideBar";
+import { jacketAdded, totalOrdered } from "../store/order";
+import calPriceShirtAndJacket from "../utils/calPriceShirtAndJacket";
 
 class OrderJacketForm extends Form {
   state = {
     data: {
-      jacketHeight: "",
-      jacketChest: "",
-      jacketHip: "",
-      jacketSleeve: "",
-      jacketShoulder: "",
-      jacketQuantity: "",
+      jacketHeight: this.props.jacketHeight,
+      jacketChest: this.props.jacketChest,
+      jacketHip: this.props.jacketHip,
+      jacketSleeve: this.props.jacketSleeve,
+      jacketShoulder: this.props.jacketShoulder,
+      jacketQuantity: this.props.jacketQuantity,
     },
     imageSource: "",
     textSource: "",
@@ -22,38 +26,42 @@ class OrderJacketForm extends Form {
   };
 
   schema = {
-    jacketChest: Joi.number().min(65).max(100).required().label("jacketChest"),
-    jacketSleeve: Joi.number().min(30).max(68).required().label("jacketSleeve"),
+    jacketChest: Joi.number().min(65).required().label("jacketChest"),
+    jacketSleeve: Joi.number().min(30).required().label("jacketSleeve"),
     jacketHeight: Joi.number()
       .min(61)
-      .max(105)
+      .max(120)
       .required()
       .label("jacketHeight"),
-    jacketShoulder: Joi.number()
-      .min(24)
-      .max(40)
-      .required()
-      .label("jacketShoulder"),
-    jacketHip: Joi.number().min(70).max(110).required().label("jacketHip"),
+    jacketShoulder: Joi.number().min(24).required().label("jacketShoulder"),
+    jacketHip: Joi.number().min(70).required().label("jacketHip"),
     jacketQuantity: Joi.number()
-      .min(1)
+      .min(0)
       .max(10)
       .required()
       .label("jacketQuantity"),
   };
 
-  doSubmitt = async () => {
-    // try {
-    //   const { data } = this.state;
-    //   await auth.login(data.username, data.password);
-    //   window.location = "/";
-    // } catch (ex) {
-    //   if (ex.response && ex.response.status === 400) {
-    //     const errors = { ...this.state.errors };
-    //     errors.username = ex.response.data;
-    //     this.setState({ errors });
-    //   }
-    // }
+  doSubmitt = () => {
+    let price = calPriceShirtAndJacket(
+      this.state.data.jacketHeight,
+      this.props.userSchool
+    );
+    price = price * parseInt(this.state.data.jacketQuantity);
+    this.props.jacketAdded({
+      jacketHeight: this.state.data.jacketHeight,
+      jacketChest: this.state.data.jacketChest,
+      jacketHip: this.state.data.jacketHip,
+      jacketShoulder: this.state.data.jacketShoulder,
+      jacketSleeve: this.state.data.jacketSleeve,
+      quantity: this.state.data.jacketQuantity,
+      price,
+      name: "مانتو",
+    });
+    this.props.totalOrdered({});
+    if (this.state.data.jacketQuantity === "0")
+      toast("مانتو از سبد خرید حذف شد");
+    else toast("مانتو به سبد خرید اضافه شد");
   };
 
   render() {
@@ -133,9 +141,7 @@ class OrderJacketForm extends Form {
                   className="orderjacket__extra--image"
                 />
                 <p className="orderjacket__extra--text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur numquam reiciendis molestiae nam officiis, eius
-                  officia dicta culpa
+                  {this.state.textSource}
                 </p>
               </div>
             )}
@@ -146,5 +152,23 @@ class OrderJacketForm extends Form {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    jacketHeight: state.entities.orders.items.jacket.height,
+    jacketChest: state.entities.orders.items.jacket.chest,
+    jacketHip: state.entities.orders.items.jacket.hip,
+    jacketQuantity: state.entities.orders.items.jacket.quantity,
+    jacketShoulder: state.entities.orders.items.jacket.shoulder,
+    jacketSleeve: state.entities.orders.items.jacket.sleeve,
+    price: state.entities.orders.items.jacket.price,
+    userSchool: state.entities.users.data.schoolname,
+  };
+};
 
-export default OrderJacketForm;
+const matchDispatchToProps = (dispatch) => {
+  return bindActionCreators({ jacketAdded, totalOrdered }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(OrderJacketForm);
+
+// export default OrderJacketForm;
