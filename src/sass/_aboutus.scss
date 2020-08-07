@@ -1,0 +1,24 @@
+.aboutus {
+  padding: 4rem 0;
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  align-self: center;
+
+  &__phone {
+    margin-bottom: 3rem;
+  }
+  &__time {
+    margin-bottom: 3rem;
+  }
+
+  &__telegram {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  &__attention {
+    margin-bottom: 3rem;
+  }
+}

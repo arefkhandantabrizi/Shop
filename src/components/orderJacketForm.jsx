@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -68,6 +69,7 @@ class OrderJacketForm extends Form {
 
   render() {
     document.title = "تولیدی پوشاک ملینا ترشیز|‌سفارش مانتو";
+    if (this.props.gender !== "Female") return <Redirect to="/access-denied" />;
     return (
       <Fragment>
         <NavBar />
@@ -159,6 +161,7 @@ class OrderJacketForm extends Form {
 }
 const mapStateToProps = (state) => {
   return {
+    gender: state.entities.users.data.gender,
     orderList: state.entities.orders.list,
     jacketHeight: state.entities.orders.items.jacket.height,
     jacketChest: state.entities.orders.items.jacket.chest,

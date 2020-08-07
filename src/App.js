@@ -13,6 +13,7 @@ import OrderScarfForm from "./components/orderScarfFrom";
 import Validate from "./components/validate";
 import Cart from "./components/cart";
 import "react-toastify/dist/ReactToastify.css";
+import AboutUs from "./components/aboutUs";
 
 function App() {
   return (
@@ -21,7 +22,6 @@ function App() {
       <div className="container">
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/not-found" component={NotFound} />
           <Route path="/access-denied" component={AccessDenied} />
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
@@ -31,6 +31,8 @@ function App() {
           <Route path="/order-scarf" component={OrderScarfForm} />
           <Route path="/cart" component={Cart} />
           <Route path="/validate" component={Validate} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/not-found" component={NotFound} />
 
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

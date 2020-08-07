@@ -21,7 +21,7 @@ const Footer = () => {
           </Link>
         </li>
         <li className="footernav__item">
-          <Link to="#" className="footernav__link">
+          <Link to="/about-us" className="footernav__link">
             ارتباط با ما
           </Link>
         </li>

@@ -989,3 +989,20 @@ tr:hover {
   .validate__btn {
     text-decoration: none;
     justify-self: center; }
+
+.aboutus {
+  padding: 4rem 0;
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  justify-items: center; }
+  .aboutus__phone {
+    margin-bottom: 3rem; }
+  .aboutus__time {
+    margin-bottom: 3rem; }
+  .aboutus__telegram {
+    margin-top: 3rem;
+    margin-bottom: 3rem; }
+  .aboutus__attention {
+    margin-bottom: 3rem; }
