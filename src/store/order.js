@@ -152,9 +152,46 @@ const slice = createSlice({
       orders.authority = authority;
       orders.url = url;
     },
+    validateRequested: (orders, action) => {
+      orders.authority = action.payload;
+      orders.submited = true;
+    },
+
+    orderListEmptied: (orders, action) => {
+      orders.list = action.payload.list;
+      orders.authority = action.payload.authority;
+      orders.submited = action.payload.submited;
+      orders.totalCount = action.payload.totalCount;
+      orders.totalPrice = action.payload.totalPrice;
+      orders.url = action.payload.url;
+
+      orders.items.jacket.price = action.payload.jacketPrice;
+      orders.items.jacket.quantity = action.payload.jacketQuantity;
+      orders.items.jacket.chest = action.payload.jacketChest;
+      orders.items.jacket.height = action.payload.jacketHeight;
+      orders.items.jacket.hip = action.payload.jacketHip;
+      orders.items.jacket.shoulder = action.payload.jacketShoulder;
+      orders.items.jacket.sleeve = action.payload.jacketSleeve;
+      orders.items.pants.height = action.payload.pantsHeight;
+      orders.items.pants.hip = action.payload.pantsHip;
+      orders.items.pants.leg = action.payload.pantsLeg;
+      orders.items.pants.price = action.payload.pantsPrice;
+      orders.items.pants.quantity = action.payload.pantsQuantity;
+      orders.items.scarf.price = action.payload.scarfPrice;
+      orders.items.scarf.quantity = action.payload.scarfQuantity;
+      orders.items.shirt.chest = action.payload.shirtChest;
+      orders.items.shirt.height = action.payload.shirtHeight;
+      orders.items.shirt.hip = action.payload.shirtHip;
+      orders.items.shirt.price = action.payload.shirtPrice;
+      orders.items.shirt.quantity = action.payload.shirtQuantity;
+      orders.items.shirt.shoulder = action.payload.shirtShoulder;
+      orders.items.shirt.sleeve = action.payload.shirtSleeve;
+    },
   },
 });
 export const {
+  orderListEmptied,
+  validateRequested,
   paymentRequested,
   totalOrdered,
   usersAdded,
@@ -173,6 +210,14 @@ export const requestPayment = (orders) =>
     method: "post",
     data: orders,
     onSuccess: paymentRequested.type,
+    onError: ordersRequestFailed.type,
+  });
+export const validatePayment = (orders) =>
+  apiCallBegan({
+    url: "/validatePayments",
+    method: "post",
+    data: orders,
+    onSuccess: validateRequested.type,
     onError: ordersRequestFailed.type,
   });
 

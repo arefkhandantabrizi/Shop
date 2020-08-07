@@ -52,9 +52,9 @@ class OrderPantsForm extends Form {
     this.props.totalOrdered({});
     const count = this.props.orderList.map((order) => order.name === "شلوار");
     if (this.state.data.pantsQuantity === "0" && count.length === 1)
-      toast("شلوار از سبد خرید حذف شد");
+      toast("شلوار 👖 از سبد خرید حذف شد");
     else if (parseInt(this.state.data.pantsQuantity) !== 0)
-      toast("شلوار به سبد خرید اضافه شد");
+      toast("شلوار 👖 به سبد خرید اضافه شد");
   };
 
   render() {
@@ -65,6 +65,9 @@ class OrderPantsForm extends Form {
         <NavBar />
         <SideBar />
         <div className="orderpants">
+          <div className="alert alert__danger alert--order">
+            در طول ثبت سفارش برای ثبت اعداد از صفحه کلید انگلیسی استفاده کنید
+          </div>
           <h1 className="orderpants__heading heading-2--dark u-margin-top-small">
             سفارش شلوار
           </h1>
@@ -129,6 +132,7 @@ class OrderPantsForm extends Form {
 }
 const mapStateToProps = (state) => {
   return {
+    orderList: state.entities.orders.list,
     pantsHeight: state.entities.orders.items.pants.height,
     pantsHip: state.entities.orders.items.pants.hip,
     pantsLeg: state.entities.orders.items.pants.leg,

@@ -3,16 +3,20 @@
   background-color: rgba($color-grey-light-1, 0.5);
   margin-right: 3rem;
   padding: 1rem;
+  display: grid;
 
   &__text {
+    width: 90%;
     padding: 3rem 0;
-    margin-bottom: 5rem;
+    // margin-bottom: 5rem;
     font-size: 1.4rem;
     text-align: justify;
 
     &--payment {
+      display: block;
+      font-weight: 700;
       font-size: 1.2rem;
-      margin-right: 2rem;
+      margin-bottom: 2rem;
       color: $color-primary;
     }
   }
@@ -61,6 +65,11 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8rem);
+  }
+
+  &__btn {
+    margin-right: 0;
+    margin-bottom: 3rem;
   }
 }
 table {

@@ -58,7 +58,21 @@ export default function calPriceShirtAndJacket(Height, userSchool) {
       if (height > 95 && height <= 120) return 61000;
       break;
 
-    case "دبیرستان دخترانه رازی":
+    case "متوسطه دوره دوم دخترانه رازی":
+      if (height >= 61 && height <= 101) return 70000;
+      if (height > 101 && height <= 108) return 76000;
+      if (height > 108 && height <= 115) return 82000;
+      if (height > 115 && height <= 120) return 83000;
+      break;
+
+    case "متوسطه دوره دوم دخترانه الزهرا":
+      if (height >= 61 && height <= 101) return 70000;
+      if (height > 101 && height <= 108) return 76000;
+      if (height > 108 && height <= 115) return 82000;
+      if (height > 115 && height <= 120) return 83000;
+      break;
+
+    case "متوسطه دوره دوم دخترانه تیزهوشان":
       if (height >= 61 && height <= 101) return 70000;
       if (height > 101 && height <= 108) return 76000;
       if (height > 108 && height <= 115) return 82000;

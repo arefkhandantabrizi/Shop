@@ -61,9 +61,9 @@ class OrderJacketForm extends Form {
     this.props.totalOrdered({});
     const count = this.props.orderList.map((order) => order.name === "مانتو");
     if (this.state.data.jacketQuantity === "0" && count.length === 1)
-      toast("مانتو از سبد خرید حذف شد");
+      toast("مانتو 🧥 از سبد خرید حذف شد ");
     else if (parseInt(this.state.data.jacketQuantity) !== 0)
-      toast("مانتو به سبد خرید اضافه شد");
+      toast("مانتو 🧥 به سبد خرید اضافه شد");
   };
 
   render() {
@@ -73,6 +73,9 @@ class OrderJacketForm extends Form {
         <NavBar />
         <SideBar />
         <div className="orderjacket">
+          <div className="alert alert__danger alert--order">
+            در طول ثبت سفارش برای ثبت اعداد از صفحه کلید انگلیسی استفاده کنید
+          </div>
           <h1 className="orderjacket__heading heading-2--dark u-margin-top-small">
             سفارش مانتو
           </h1>
@@ -156,6 +159,7 @@ class OrderJacketForm extends Form {
 }
 const mapStateToProps = (state) => {
   return {
+    orderList: state.entities.orders.list,
     jacketHeight: state.entities.orders.items.jacket.height,
     jacketChest: state.entities.orders.items.jacket.chest,
     jacketHip: state.entities.orders.items.jacket.hip,

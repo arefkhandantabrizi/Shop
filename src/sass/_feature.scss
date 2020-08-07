@@ -1,4 +1,11 @@
 .features {
+  @media only screen and (max-width: $bp-largest) {
+    grid-column: sidebar-end/ center-end;
+  }
+  @media only screen and (max-width: $bp-larger) {
+    grid-column: sidebar-start/ center-end;
+    margin-right: 3rem;
+  }
   grid-column: center-start / center-end;
 
   margin: 12rem 0;

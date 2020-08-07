@@ -38,9 +38,9 @@ class OrderScarfFrom extends Form {
     this.props.totalOrdered({});
     const count = this.props.orderList.map((order) => order.name === "مقنعه");
     if (this.state.data.scarfQuantity === "0" && count.length === 1)
-      toast("مقنعه از سبد خرید حذف شد");
+      toast("مقنعه 🧕🏻 از سبد خرید حذف شد");
     else if (parseInt(this.state.data.scarfQuantity) !== 0)
-      toast("مقنعه به سبد خرید اضافه شد");
+      toast("مقنعه 🧕🏻 به سبد خرید اضافه شد");
   };
 
   render() {
@@ -51,6 +51,9 @@ class OrderScarfFrom extends Form {
         <NavBar />
         <SideBar />
         <div className="orderscarf">
+          <div className="alert alert__danger alert--order">
+            در طول ثبت سفارش برای ثبت اعداد از صفحه کلید انگلیسی استفاده کنید
+          </div>
           <h1 className="orderscarf__heading heading-2--dark u-margin-top-small">
             سفارش مقنعه
           </h1>
@@ -66,6 +69,12 @@ class OrderScarfFrom extends Form {
                 "orderscarf__input"
               )}
               {this.renderButton("افزودن به سبد خرید", "btn orderjacket__btn")}
+            </div>
+            <div className="orderjacket__extra">
+              <p className="orderjacket__extra--text">
+                سایز مقنعه براساس پایه تحصیلی و اندازه لباس فرم، توسط تولیدی
+                تعیین می شود.
+              </p>
             </div>
           </form>
         </div>

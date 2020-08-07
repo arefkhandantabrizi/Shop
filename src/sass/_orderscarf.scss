@@ -7,6 +7,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: rgba($color-grey-light-1, 0.5);
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__heading {
@@ -29,6 +33,10 @@
     width: 70%;
     display: block;
     transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
 
     &:focus {
       outline: none;

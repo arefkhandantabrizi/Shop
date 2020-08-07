@@ -42,7 +42,6 @@ const slice = createSlice({
       users.error = action.payload;
     },
     usersLogined: (users, action) => {
-      const jwt = action.payload;
       const {
         name,
         username,
@@ -50,7 +49,7 @@ const slice = createSlice({
         schoolgrade,
         gender,
         _id,
-      } = jwtDecode(jwt);
+      } = jwtDecode(action.payload);
       users.data.name = name;
       users.data.username = username;
       users.data.schoolname = schoolname;
@@ -59,11 +58,26 @@ const slice = createSlice({
       users.data._id = _id;
       users.submited = true;
       users.error = "";
-      users.jwt = jwt;
+      users.jwt = action.payload;
+    },
+    usersLogouted: (users, action) => {
+      users.data._id = action.payload._id;
+      users.data.gender = action.payload.gender;
+      users.data.username = action.payload.username;
+      users.data.schoolgrade = action.payload.schoolgrade;
+      users.data.schoolname = action.payload.schoolname;
+      users.error = action.payload.error;
+      users.jwt = action.payload.jwt;
+      users.submited = action.payload.submited;
     },
   },
 });
-const { usersAdded, usersRequestFailed, usersLogined } = slice.actions;
+export const {
+  usersAdded,
+  usersRequestFailed,
+  usersLogined,
+  usersLogouted,
+} = slice.actions;
 
 const url = "/users";
 export const addUser = (user) =>

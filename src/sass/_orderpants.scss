@@ -8,6 +8,10 @@
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__heading {
@@ -30,6 +34,10 @@
     width: 70%;
     display: block;
     transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
 
     &:focus {
       outline: none;
@@ -77,14 +85,14 @@
     transform: translateY(-8rem);
   }
 
-  &__extra {
-    grid-row: 1 / span 3;
-    grid-column: 2 / span 1;
-    display: grid;
-    grid-template-columns: 1fr;
+  // &__extra {
+  //   grid-row: 1 / span 3;
+  //   grid-column: 2 / span 1;
+  //   display: grid;
+  //   grid-template-columns: 1fr;
 
-    &--image {
-      width: 40%;
-    }
-  }
+  //   &--image {
+  //     width: 40%;
+  //   }
+  // }
 }

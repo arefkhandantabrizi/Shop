@@ -58,7 +58,19 @@ export default function calPricePants(Height, userSchool) {
       if (height > 105 && height <= 120) return 39000;
       break;
 
-    case "دبیرستان دخترانه رازی":
+    case "متوسطه دوره دوم دخترانه رازی":
+      if (height >= 60 && height <= 105) return 40000;
+      if (height > 105 && height <= 110) return 45000;
+      if (height > 110 && height <= 120) return 50000;
+      break;
+
+    case "متوسطه دوره دوم دخترانه الزهرا":
+      if (height >= 60 && height <= 105) return 40000;
+      if (height > 105 && height <= 110) return 45000;
+      if (height > 110 && height <= 120) return 50000;
+      break;
+
+    case "متوسطه دوره دوم دخترانه تیزهوشان":
       if (height >= 60 && height <= 105) return 40000;
       if (height > 105 && height <= 110) return 45000;
       if (height > 110 && height <= 120) return 50000;

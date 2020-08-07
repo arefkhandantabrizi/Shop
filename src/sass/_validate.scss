@@ -1,0 +1,32 @@
+.validate {
+  grid-column: 1 / -1;
+  grid-row: 1/ -1;
+  justify-content: center;
+  align-content: center;
+  display: grid;
+
+  &__icon {
+    margin: 10rem auto;
+    width: 20rem;
+    height: 20rem;
+
+    &--success {
+      fill: green;
+    }
+
+    &--failed {
+      fill: $color-quaternary;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+  }
+
+  &__btn {
+    text-decoration: none;
+    justify-self: center;
+  }
+}

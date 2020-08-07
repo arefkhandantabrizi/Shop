@@ -3,6 +3,10 @@
   display: flex;
   justify-content: center;
   background-color: $color-gray-dark-3;
+
+  @media only screen and (max-width: $bp-small) {
+    // grid-column: sidebar-start / full-end;
+  }
 }
 .side-nav {
   font-size: 1.4rem;

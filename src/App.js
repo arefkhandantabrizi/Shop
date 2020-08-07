@@ -10,13 +10,14 @@ import OrderJacketForm from "./components/orderJacketForm";
 import OrderShirtForm from "./components/orderShirtForm";
 import OrderPantsForm from "./components/orderPantsForm";
 import OrderScarfForm from "./components/orderScarfFrom";
+import Validate from "./components/validate";
 import Cart from "./components/cart";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <React.Fragment>
-      <ToastContainer />
+      <ToastContainer rtl={true} />
       <div className="container">
         <Switch>
           <Route path="/home" component={Home} />
@@ -29,6 +30,7 @@ function App() {
           <Route path="/order-pants" component={OrderPantsForm} />
           <Route path="/order-scarf" component={OrderScarfForm} />
           <Route path="/cart" component={Cart} />
+          <Route path="/validate" component={Validate} />
 
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

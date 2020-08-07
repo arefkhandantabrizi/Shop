@@ -1,6 +1,11 @@
 .login {
   width: 45vw;
-
+  @media only screen and (max-width: $bp-medium) {
+    width: 55vw;
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 75vw;
+  }
   &__heading {
     font-size: 3rem;
     padding-bottom: 2rem;

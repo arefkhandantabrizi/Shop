@@ -27,7 +27,8 @@ $font-display: iransansdn, tahoma;
 $boder-radius: 3px;
 
 //Responsive breakpoints
-$bp-largest: 75rem; // 1200px
+$bp-largest: 100rem; //1600px
+$bp-larger: 75rem; // 1200px
 $bp-large: 62.5rem; // 1000px
 $bp-medium: 50rem; // 800px
 $bp-small: 37.5rem; // 600px
@@ -43,6 +44,15 @@ $bp-small: 37.5rem; // 600px
 html {
   box-sizing: border-box;
   font-size: 62.6%;
+  @media only screen and (max-width: $bp-larger) {
+    font-size: 55%;
+  }
+  @media only screen and (max-width: $bp-large) {
+    font-size: 51%;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    font-size: 45%;
+  }
 }
 
 body {
@@ -51,6 +61,11 @@ body {
   font-weight: 300;
   line-height: 1.6;
   direction: rtl;
+}
+
+.Toastify__toast-container {
+  right: 0;
+  font-size: 1.3rem;
 }
 
 .container {
@@ -63,4 +78,10 @@ body {
     [sidebar-start] 12rem [sidebar-end full-start] minmax(6rem, 1fr)
     [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
     [center-end] minmax(6rem, 1fr) [full-end];
+  @media only screen and (max-width: $bp-large) {
+    grid-template-rows: min-content minmax(70vh, max-content);
+  }
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: min-content minmax(90vw, max-content);
+  }
 }

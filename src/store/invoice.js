@@ -21,6 +21,13 @@ const slice = createSlice({
     _id: "",
   },
   reducers: {
+    invoiceValidated: (invoices, action) => {
+      const { ispayed, paymentcode } = action.payload;
+      invoices.ispayed = ispayed;
+      invoices.paymentcode = paymentcode;
+      invoices.submited = true;
+    },
+
     invoiceAdded: (invoices, action) => {
       const {
         _id,
@@ -52,9 +59,42 @@ const slice = createSlice({
     invoiceRequestsFailed: (invoices, action) => {
       invoices.error = action.payload;
     },
+    invoiceClearedData: (invoices, action) => {
+      const {
+        _id,
+        name,
+        username,
+        schoolname,
+        schoolgrade,
+        items,
+        address,
+        phone,
+        totalprice,
+        ispayed,
+        paymentcode,
+        proccessed,
+      } = action.payload;
+      invoices.address = address;
+      invoices.ispayed = ispayed;
+      invoices.items = items;
+      invoices.name = name;
+      invoices.paymentcode = paymentcode;
+      invoices.phone = phone;
+      invoices.proccessed = proccessed;
+      invoices.schoolgrade = schoolgrade;
+      invoices.schoolname = schoolname;
+      invoices.totalprice = totalprice;
+      invoices.username = username;
+      invoices._id = _id;
+    },
   },
 });
-const { invoiceAdded, invoiceRequestsFailed } = slice.actions;
+export const {
+  invoiceAdded,
+  invoiceRequestsFailed,
+  invoiceValidated,
+  invoiceClearedData,
+} = slice.actions;
 
 const url = "/invoices";
 export const addInvoice = (invoice, jwt) =>
@@ -64,6 +104,15 @@ export const addInvoice = (invoice, jwt) =>
     data: invoice,
     jwt,
     onSuccess: invoiceAdded.type,
+    onError: invoiceRequestsFailed.type,
+  });
+export const updateInvoice = (invoice, jwt) =>
+  apiCallBegan({
+    url: url + "/:" + invoice._id,
+    method: "put",
+    data: invoice,
+    jwt,
+    onSuccess: invoiceValidated.type,
     onError: invoiceRequestsFailed.type,
   });
 

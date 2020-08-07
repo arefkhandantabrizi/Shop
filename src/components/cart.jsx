@@ -71,9 +71,11 @@ class Cart extends Form {
           <form onSubmit={this.handleSubmit} className="orderJacket__form">
             <Table columns={this.columns} data={this.props.orderList} />
             <div className="cart__text">
-              لطفا آدرس خود را با دقت وارد نمایید چرا که لباس بعد از آماده شدن
-              توسط پیک، به این آدرس ارسال خواهد شد. هماهنگی لازم قبل از ارسال با
-              شما انجام می شود پس منتظر تماس از طرف تولیدی باشید.
+              <p className="cart__text">
+                لطفا آدرس خود را با دقت وارد نمایید چرا که لباس بعد از آماده شدن
+                توسط پیک، به این آدرس ارسال خواهد شد. هماهنگی لازم قبل از ارسال
+                با شما انجام می شود پس منتظر تماس از طرف تولیدی باشید.
+              </p>
             </div>
             {this.renderInputOrder(
               "cart__label",
@@ -93,10 +95,10 @@ class Cart extends Form {
               "text",
               "cart__Input"
             )}
-            {this.renderButton("ثبت و پرداخت")}
             <span className="cart__text--payment">
               توجه هزینه ارسال معادل ۳۰۰۰ تومان به قیمت کل اضافه می شود
             </span>
+            {this.renderButton("ثبت و پرداخت", "btn cart__btn")}
           </form>
         </div>
         <Footer />
