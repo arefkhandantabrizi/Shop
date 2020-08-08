@@ -4,10 +4,42 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from "./common/icon";
-import { validatePayment } from "../store/order";
+import { validatePayment, orderListEmptied } from "../store/order";
 import { updateInvoice } from "../store/invoice";
 
 class Validate extends Component {
+  handleClick = () => {
+    this.props.orderListEmptied({
+      list: [],
+      authority: "",
+      submited: "",
+      totalCount: 0,
+      totalPrice: 0,
+      url: "",
+      jacketPrice: 0,
+      jacketQuantity: 0,
+      jacketChest: "",
+      jacketHeight: "",
+      jacketHip: "",
+      jacketShoulder: "",
+      jacketSleeve: "",
+      pantsHeight: "",
+      pantsHip: "",
+      pantsLeg: "",
+      pantsPrice: 0,
+      pantsQuantity: 0,
+      scarfPrice: 0,
+      scarfQuantity: 0,
+      shirtChest: "",
+      shirtHeight: "",
+      shirtHip: "",
+      shirtPrice: 0,
+      shirtQuantity: 0,
+      shirtShoulder: "",
+      shirtSleeve: "",
+    });
+  };
+
   render() {
     const value = queryString.parse(this.props.location.search);
     const status = value.Status;
@@ -17,7 +49,7 @@ class Validate extends Component {
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
       });
-      if (this.props.submited)
+      if (this.props.submited) {
         this.props.updateInvoice(
           {
             _id: this.props.invoiceID,
@@ -26,6 +58,8 @@ class Validate extends Component {
           },
           this.props.jwt
         );
+      }
+
       return (
         <div className="validate">
           <Icon
@@ -39,7 +73,7 @@ class Validate extends Component {
               @tolidi_melina عضو شوید
             </p>
           </div>
-          <Link to="/" className="btn validate__btn">
+          <Link to="/" className="btn validate__btn" onClick={this.handleClick}>
             بازگشت به سایت
           </Link>
         </div>
@@ -73,7 +107,10 @@ const mapStateToProps = (state) => {
 };
 
 const matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({ validatePayment, updateInvoice }, dispatch);
+  return bindActionCreators(
+    { validatePayment, updateInvoice, orderListEmptied },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, matchDispatchToProps)(Validate);

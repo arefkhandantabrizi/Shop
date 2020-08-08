@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Home from "./components/home";
 import AccessDenied from "./components/accessDenied";
@@ -16,26 +16,55 @@ import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./components/aboutUs";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // console.log("Location changed", location);
+  }, [location]);
+
   return (
     <React.Fragment>
       <ToastContainer rtl={true} />
       <div className="container">
         <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/access-denied" component={AccessDenied} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/register" component={RegisterForm} />
-          <Route path="/order-jacket" component={OrderJacketForm} />
-          <Route path="/order-shirt" component={OrderShirtForm} />
-          <Route path="/order-pants" component={OrderPantsForm} />
-          <Route path="/order-scarf" component={OrderScarfForm} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/validate" component={Validate} />
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/not-found" component={NotFound} />
-
+          {location.pathname === "/home" && (
+            <Route path="/home" component={Home} />
+          )}
+          {location.pathname === "/access-denied" && (
+            <Route path="/access-denied" component={AccessDenied} />
+          )}
+          {location.pathname === "/login" && (
+            <Route path="/login" component={LoginForm} />
+          )}
+          {location.pathname === "/register" && (
+            <Route path="/register" component={RegisterForm} />
+          )}
+          {location.pathname === "/order-jacket" && (
+            <Route path="/order-jacket" component={OrderJacketForm} />
+          )}
+          {location.pathname === "/order-shirt" && (
+            <Route path="/order-shirt" component={OrderShirtForm} />
+          )}
+          {location.pathname === "/order-pants" && (
+            <Route path="/order-pants" component={OrderPantsForm} />
+          )}
+          {location.pathname === "/order-scarf" && (
+            <Route path="/order-scarf" component={OrderScarfForm} />
+          )}
+          {location.pathname === "/cart" && (
+            <Route path="/cart" component={Cart} />
+          )}
+          {location.pathname === "/validate" && (
+            <Route path="/validate" component={Validate} />
+          )}
+          {location.pathname === "/about-us" && (
+            <Route path="/about-us" component={AboutUs} />
+          )}
+          {location.pathname === "/not-found" && (
+            <Route path="/not-found" component={NotFound} />
+          )}
           <Redirect from="/" exact to="/home" />
-          <Redirect to="/not-found" />
+          {location.pathname && <Redirect to="/not-found" />}
         </Switch>
       </div>
     </React.Fragment>

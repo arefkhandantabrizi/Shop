@@ -22,7 +22,7 @@ const api = ({ dispatch }) => (next) => async (action) => {
     if (jwt) axios.defaults.headers.common["x-auth-token"] = jwt;
 
     const response = await axios.request({
-      baseURL: "http://localhost:3900/api",
+      baseURL: "https://api.tolidimelina.ir/api",
       url,
       method,
       data,
