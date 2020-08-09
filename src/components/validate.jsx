@@ -60,12 +60,21 @@ class Validate extends Component {
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
       });
-      if (this.props.submited) {
+      if (this.props.submited && this.props.failedAuthority === "") {
         this.props.updateInvoice(
           {
             _id: this.props.invoiceID,
             ispayed: true,
             paymentcode: this.props.authority,
+          },
+          this.props.jwt
+        );
+      } else if (this.props.submited && this.props.failedAuthority !== "") {
+        this.props.updateInvoice(
+          {
+            _id: this.props.invoiceID,
+            ispayed: true,
+            paymentcode: this.props.failedAuthority,
           },
           this.props.jwt
         );
@@ -111,6 +120,7 @@ const mapStateToProps = (state) => {
   return {
     totalPrice: state.entities.orders.totalPrice,
     authority: state.entities.orders.authority,
+    failedAuthority: state.entities.orders.failedAuthority,
     jwt: state.entities.users.jwt,
     invoiceID: state.entities.invoices._id,
     submited: state.entities.orders.submited,

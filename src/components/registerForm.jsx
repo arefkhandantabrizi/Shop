@@ -132,7 +132,6 @@ class RegisterForm extends Form {
       return <Redirect to="/order-jacket" />;
     }
 
-    console.log(this.state.errors);
     return (
       <Fragment>
         <NavBar />

@@ -46,6 +46,7 @@ const slice = createSlice({
     totalCount: 0,
     url: "",
     authority: "",
+    failedAuthority: "",
     error: "",
     submited: false,
     loading: false,
@@ -163,7 +164,7 @@ const slice = createSlice({
       orders.submited = true;
     },
     validateRequestedFailed: (orders, action) => {
-      orders.authority = action.payload;
+      orders.failedAuthority = action.payload;
       orders.submited = true;
     },
 
