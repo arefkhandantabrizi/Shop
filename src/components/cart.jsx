@@ -8,6 +8,8 @@ import NavBar from "./navBar";
 import Footer from "./footer";
 import { requestPayment } from "../store/order";
 import { addInvoice } from "../store/invoice";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 class Cart extends Form {
   state = {
@@ -33,7 +35,7 @@ class Cart extends Form {
 
     { path: "quantity", label: "تعداد" },
 
-    { path: "price", label: "قیمت" },
+    { path: "price", label: "قیمت (تومان)" },
   ];
 
   doSubmitt = () => {
@@ -69,6 +71,20 @@ class Cart extends Form {
         <NavBar />
         <div className="cart">
           <form onSubmit={this.handleSubmit} className="orderJacket__form">
+            {(this.props.schoolname ===
+              "متوسطه دوره اول دخترانه نمونه اندیشه" ||
+              this.props.schoolname === "متوسطه دوره دوم دخترانه فاطمیه") && (
+              <div>
+                <p className="cart__schoolnotification">
+                  توجه:‌ لباس فرم شما توسط تولیدی پوشاک گلپسند دوخته می شود و
+                  این تولیدی صرفا از سامانه ملینا استفاده می کند. مسئولیت کیفیت
+                  و زمان تحویل لباس شما بر عهده تولیدی گلپسند می باشد.
+                </p>
+                <p className="cart__schoolnotification--phone">
+                  تلفن های تماس تولیدی گلپسند:‌ ۵۵۲۲۳۹۰۸-۰۵۱ - ۰۹۱۵۸۸۳۷۲۲۶{" "}
+                </p>
+              </div>
+            )}
             <Table columns={this.columns} data={this.props.orderList} />
             <div className="cart__text">
               <p className="cart__text">
@@ -77,6 +93,11 @@ class Cart extends Form {
                 با شما انجام می شود پس منتظر تماس از طرف تولیدی باشید.
               </p>
             </div>
+            {this.props.loading && (
+              <div className="cart__loader">
+                <Loader type="Grid" color="#c69963" height={80} width={80} />
+              </div>
+            )}
             {this.renderInputOrder(
               "cart__label",
               "form__group",
@@ -95,10 +116,11 @@ class Cart extends Form {
               "text",
               "cart__Input"
             )}
-            <span className="cart__text--payment">
-              توجه هزینه ارسال معادل ۳۰۰۰ تومان به قیمت کل اضافه می شود
-            </span>
             {this.renderButton("ثبت و پرداخت", "btn cart__btn")}
+            <span className="cart__text--payment">
+              جمع کل {this.props.totalPrice}
+              به اضافه ۳۰۰۰ تومان هزینه ارسال پیک .{" "}
+            </span>
           </form>
         </div>
         <Footer />
@@ -120,6 +142,7 @@ const mapStateToProps = (state) => {
     schoolname: state.entities.users.data.schoolname,
     jwt: state.entities.users.jwt,
     invoiceID: state.entities.invoices._id,
+    loading: state.entities.orders.loading,
   };
 };
 

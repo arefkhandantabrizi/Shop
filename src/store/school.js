@@ -7,6 +7,7 @@ const slice = createSlice({
   initialState: {
     list: [],
     selectedSchool: "",
+    selectedGrade: "",
     loading: false,
   },
 
@@ -16,7 +17,7 @@ const slice = createSlice({
     },
 
     gradeSelected: (school, action) => {
-      school.selectedGrade.push(action.payload.gradeSelected);
+      school.selectedGrade = action.payload.selectedGrade;
     },
 
     schoolsRequested: (schools, action) => {

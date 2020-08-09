@@ -6,9 +6,9 @@ import { bindActionCreators } from "redux";
 import Form from "./common/form";
 import NavBar from "./navBar";
 import Footer from "./footer";
-import { loadSchools, schoolsSelected } from "../store/school";
+import { loadSchools, schoolsSelected, gradeSelected } from "../store/school";
 import { addUser } from "../store/users";
-import { bugAdded } from "../store/bugs";
+import { bugAdded, btnClassChanged } from "../store/bugs";
 
 // import { register } from "../services/userService";
 
@@ -42,10 +42,13 @@ class RegisterForm extends Form {
   };
 
   handleChange = ({ currentTarget: input }) => {
+    let counter = 0;
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
+
+    if (errorMessage) counter = counter + 1;
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
@@ -58,6 +61,22 @@ class RegisterForm extends Form {
       });
       const gender = selectedSchool.includes("پسرانه") ? "Male" : "Female";
       this.setState({ gender });
+    }
+    if (input.name === "schoolGrade") {
+      let schoolGrade = input.value;
+      this.props.gradeSelected({
+        schoolGrade,
+      });
+    }
+
+    if (counter !== 0) {
+      this.props.btnClassChanged({
+        btnClass: "btn--inactive registration__btn",
+      });
+    } else if (counter === 0) {
+      this.props.btnClassChanged({
+        btnClass: "btn registration__btn",
+      });
     }
   };
 
@@ -74,6 +93,14 @@ class RegisterForm extends Form {
 
   render() {
     document.title = "تولیدی پوشاک ملینا ترشیز |‌ ثبت نام ";
+
+    let grades = [];
+    // if (this.props.schools.list !== "") {
+    const school = this.props.schools.list.filter(
+      (school) => school.name === this.props.selectedSchool
+    );
+    grades = school.map((school) => school.grade);
+    // }
 
     if (
       !this.props.error &&
@@ -104,6 +131,8 @@ class RegisterForm extends Form {
       });
       return <Redirect to="/order-jacket" />;
     }
+
+    console.log(this.state.errors);
     return (
       <Fragment>
         <NavBar />
@@ -157,11 +186,12 @@ class RegisterForm extends Form {
                 <option disabled hidden>
                   {"نام مدرسه"}
                 </option>
-                {this.props.schools.list.map((option) => (
-                  <option required key={option._id} value={option.name}>
-                    {option.name}
-                  </option>
-                ))}
+                {this.props.schools.list !== "" &&
+                  this.props.schools.list.map((option) => (
+                    <option required key={option._id} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
               </select>
               {this.props.schools.selectedSchool !== "" && (
                 <label htmlFor="schoolName" className="registration__label">
@@ -170,17 +200,36 @@ class RegisterForm extends Form {
               )}
             </div>
 
-            {this.renderInputRegister(
-              "registration__label",
-              "form__group registration__input-5",
-              "2",
-              "schoolGrade",
-              "پایه تحصیلی",
-              "number",
-              "registration__input"
-            )}
+            <div className="form__group registration__input-5">
+              <select
+                name="schoolGrade"
+                id="schoolGrade"
+                className="registration__input"
+                onChange={this.handleChange}
+                value={
+                  this.props.schools.selectedGrade !== ""
+                    ? this.props.schools.selectedGrade
+                    : "پایه تحصیلی"
+                }
+              >
+                <option disabled hidden>
+                  {"پایه تحصیلی"}
+                </option>
+                {this.props.schools.selectedSchool !== "" &&
+                  grades[0].map((grade, index) => (
+                    <option required key={index} value={grade}>
+                      {grade}
+                    </option>
+                  ))}
+              </select>
+              {this.props.schools.selectedGrade !== "" && (
+                <label htmlFor="schoolName" className="registration__label">
+                  {"پایه تحصیلی"}
+                </label>
+              )}
+            </div>
 
-            {this.renderButton("ثبت نام", "btn registration__btn")}
+            {this.renderButton("ثبت نام", this.props.btnClass)}
           </form>
         </div>
         <Footer />
@@ -190,8 +239,10 @@ class RegisterForm extends Form {
 }
 const mapStateToProps = (state) => {
   return {
+    btnClass: state.entities.bugs.btnClass,
     schools: state.entities.schools,
     selectedSchool: state.entities.schools.selectedSchool,
+    selectedGrade: state.entities.schools.selectedGrade,
     loading: state.entities.schools.loading,
     error: state.entities.users.error,
     submited: state.entities.users.submited,
@@ -206,7 +257,14 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { loadSchools, schoolsSelected, addUser, bugAdded },
+    {
+      loadSchools,
+      schoolsSelected,
+      addUser,
+      bugAdded,
+      btnClassChanged,
+      gradeSelected,
+    },
     dispatch
   );
 };

@@ -157,7 +157,6 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    all: state,
     routeto: state.entities.bugs.sidebar.routeto,
     submited: state.entities.users.submited,
     gender: state.entities.users.data.gender,

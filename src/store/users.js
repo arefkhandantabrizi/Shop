@@ -24,14 +24,12 @@ const slice = createSlice({
       const {
         name,
         username,
-        password,
         schoolname,
         schoolgrade,
         gender,
       } = action.payload;
       users.data.name = name;
       users.data.username = username;
-      users.data.password = password;
       users.data.schoolname = schoolname;
       users.data.schoolgrade = schoolgrade;
       users.data.gender = gender;
@@ -85,7 +83,7 @@ export const addUser = (user) =>
     url,
     method: "post",
     data: user,
-    onSuccess: usersAdded.type,
+    onSuccess: usersLogined.type,
     onError: usersRequestFailed.type,
   });
 export const loginUser = (user) =>

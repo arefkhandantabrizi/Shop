@@ -48,6 +48,7 @@ const slice = createSlice({
     authority: "",
     error: "",
     submited: false,
+    loading: false,
   },
   reducers: {
     totalOrdered: (orders, action) => {
@@ -144,17 +145,31 @@ const slice = createSlice({
       orders.list.push(action.payload);
       orders.list = orders.list.filter((order) => order.quantity !== "0");
     },
+    ordersRequestStarted: (orders, action) => {
+      orders.loading = true;
+    },
     ordersRequestFailed: (orders, action) => {
       orders.error = action.payload;
+      orders.loading = false;
     },
     paymentRequested: (orders, action) => {
       const { url, authority } = action.payload;
       orders.authority = authority;
       orders.url = url;
+      orders.loading = false;
     },
     validateRequested: (orders, action) => {
       orders.authority = action.payload;
       orders.submited = true;
+    },
+    validateRequestedFailed: (orders, action) => {
+      orders.authority = action.payload;
+      orders.submited = true;
+    },
+
+    orderCanceled: (orders, action) => {
+      orders.url = "";
+      orders.authority = "";
     },
 
     orderListEmptied: (orders, action) => {
@@ -190,6 +205,9 @@ const slice = createSlice({
   },
 });
 export const {
+  orderCanceled,
+  ordersRequestStarted,
+  validateRequestedFailed,
   orderListEmptied,
   validateRequested,
   paymentRequested,
@@ -209,6 +227,7 @@ export const requestPayment = (orders) =>
     url,
     method: "post",
     data: orders,
+    onStart: ordersRequestStarted.type,
     onSuccess: paymentRequested.type,
     onError: ordersRequestFailed.type,
   });
@@ -218,7 +237,7 @@ export const validatePayment = (orders) =>
     method: "post",
     data: orders,
     onSuccess: validateRequested.type,
-    onError: ordersRequestFailed.type,
+    onError: validateRequestedFailed.type,
   });
 
 export default slice.reducer;

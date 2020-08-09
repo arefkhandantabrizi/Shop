@@ -18,6 +18,12 @@ export default function calPriceScarf(userSchool) {
     case "متوسطه دوره دوم دخترانه تیزهوشان":
       return 23000;
 
+    case "متوسطه دوره دوم دخترانه فاطمیه":
+      return 23000;
+
+    case "متوسطه دوره اول دخترانه نمونه اندیشه":
+      return 23000;
+
     default:
       break;
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Home from "./components/home";
@@ -18,53 +18,95 @@ import AboutUs from "./components/aboutUs";
 function App() {
   const location = useLocation();
 
-  useEffect(() => {
-    // console.log("Location changed", location);
-  }, [location]);
-
   return (
     <React.Fragment>
       <ToastContainer rtl={true} />
       <div className="container">
         <Switch>
-          {location.pathname === "/home" && (
-            <Route path="/home" component={Home} />
-          )}
-          {location.pathname === "/access-denied" && (
-            <Route path="/access-denied" component={AccessDenied} />
-          )}
-          {location.pathname === "/login" && (
-            <Route path="/login" component={LoginForm} />
-          )}
-          {location.pathname === "/register" && (
-            <Route path="/register" component={RegisterForm} />
-          )}
-          {location.pathname === "/order-jacket" && (
-            <Route path="/order-jacket" component={OrderJacketForm} />
-          )}
-          {location.pathname === "/order-shirt" && (
-            <Route path="/order-shirt" component={OrderShirtForm} />
-          )}
-          {location.pathname === "/order-pants" && (
-            <Route path="/order-pants" component={OrderPantsForm} />
-          )}
-          {location.pathname === "/order-scarf" && (
-            <Route path="/order-scarf" component={OrderScarfForm} />
-          )}
-          {location.pathname === "/cart" && (
-            <Route path="/cart" component={Cart} />
-          )}
-          {location.pathname === "/validate" && (
-            <Route path="/validate" component={Validate} />
-          )}
-          {location.pathname === "/about-us" && (
-            <Route path="/about-us" component={AboutUs} />
-          )}
-          {location.pathname === "/not-found" && (
-            <Route path="/not-found" component={NotFound} />
-          )}
+          <Route
+            path="/home"
+            render={(props) => {
+              if (location.pathname === "/home") return <Home {...props} />;
+            }}
+          />
+          <Route
+            path="/access-denied"
+            render={(props) => {
+              if (location.pathname === "/access-denied")
+                return <AccessDenied {...props} />;
+            }}
+          />
+          <Route
+            path="/login"
+            render={(props) => {
+              if (location.pathname === "/login")
+                return <LoginForm {...props} />;
+            }}
+          />
+          <Route
+            path="/register"
+            render={(props) => {
+              if (location.pathname === "/register")
+                return <RegisterForm {...props} />;
+            }}
+          />
+          <Route
+            path="/order-jacket"
+            render={(props) => {
+              if (location.pathname === "/order-jacket")
+                return <OrderJacketForm {...props} />;
+            }}
+          />
+          <Route
+            path="/order-shirt"
+            render={(props) => {
+              if (location.pathname === "/order-shirt")
+                return <OrderShirtForm {...props} />;
+            }}
+          />
+          <Route
+            path="/order-pants"
+            render={(props) => {
+              if (location.pathname === "/order-pants")
+                return <OrderPantsForm {...props} />;
+            }}
+          />
+          <Route
+            path="/order-scarf"
+            render={(props) => {
+              if (location.pathname === "/order-scarf")
+                return <OrderScarfForm {...props} />;
+            }}
+          />
+          <Route
+            path="/cart"
+            render={(props) => {
+              if (location.pathname === "/cart") return <Cart {...props} />;
+            }}
+          />
+          <Route
+            path="/validate"
+            render={(props) => {
+              if (location.pathname === "/validate")
+                return <Validate {...props} />;
+            }}
+          />
+          <Route
+            path="/about-us"
+            render={(props) => {
+              if (location.pathname === "/about-us")
+                return <AboutUs {...props} />;
+            }}
+          />
+          <Route
+            path="/not-found"
+            render={(props) => {
+              if (location.pathname === "/not-found")
+                return <NotFound {...props} />;
+            }}
+          />
           <Redirect from="/" exact to="/home" />
-          {location.pathname && <Redirect to="/not-found" />}
+          <Redirect to="/not-found" />
         </Switch>
       </div>
     </React.Fragment>

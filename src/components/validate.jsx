@@ -4,10 +4,21 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from "./common/icon";
-import { validatePayment, orderListEmptied } from "../store/order";
+import {
+  validatePayment,
+  orderListEmptied,
+  orderCanceled,
+} from "../store/order";
 import { updateInvoice } from "../store/invoice";
 
 class Validate extends Component {
+  handleError = () => {
+    this.props.orderCanceled({
+      url: "",
+      authority: "",
+    });
+  };
+
   handleClick = () => {
     this.props.orderListEmptied({
       list: [],
@@ -88,7 +99,7 @@ class Validate extends Component {
         <div>
           <p className="validate__text">پرداخت سفارش موفق نبود</p>
         </div>
-        <Link to="/" className="btn validate__btn">
+        <Link to="/" className="btn validate__btn" onClick={this.handleError}>
           بازگشت به سایت
         </Link>
       </div>
@@ -102,13 +113,13 @@ const mapStateToProps = (state) => {
     authority: state.entities.orders.authority,
     jwt: state.entities.users.jwt,
     invoiceID: state.entities.invoices._id,
-    submmit: state.entities.orders.submited,
+    submited: state.entities.orders.submited,
   };
 };
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { validatePayment, updateInvoice, orderListEmptied },
+    { validatePayment, updateInvoice, orderListEmptied, orderCanceled },
     dispatch
   );
 };
