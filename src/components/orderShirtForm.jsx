@@ -27,15 +27,11 @@ class OrderShirtForm extends Form {
   };
 
   schema = {
-    shirtChest: Joi.number().min(0).max(125).required().label("shirtChest"),
-    shirtSleeve: Joi.number().min(0).max(70).required().label("shirtSleeve"),
+    shirtChest: Joi.number().min(0).required().label("shirtChest"),
+    shirtSleeve: Joi.number().min(0).required().label("shirtSleeve"),
     shirtHeight: Joi.number().min(0).max(75).required().label("shirtHeight"),
-    shirtShoulder: Joi.number()
-      .min(0)
-      .max(45)
-      .required()
-      .label("shirtShoulder"),
-    shirtHip: Joi.number().min(0).max(125).required().label("shirtHip"),
+    shirtShoulder: Joi.number().min(0).required().label("shirtShoulder"),
+    shirtHip: Joi.number().min(0).required().label("shirtHip"),
     shirtQuantity: Joi.number()
       .min(0)
       .max(10)

@@ -374,8 +374,8 @@ class Form extends Component {
         return "قد مانتو باید مقداری عددی داشته باشد";
       case '"jacketHeight" must be larger than or equal to 0':
         return "قد مانتو باید بزرگتر یا مساوی ۰ باشد";
-      case '"jacketHeight" must be less than or equal to 105':
-        return "قد مانتو باید کمتر یا مساوی ۱۰۵ باشد ";
+      case '"jacketHeight" must be less than or equal to 120':
+        return "قد مانتو باید کمتر یا مساوی ۱۲۰ باشد ";
 
       case '"jacketSleeve" must be a number':
         return "قد آستین باید مقداری عددی داشته باشد";
@@ -458,8 +458,8 @@ class Form extends Component {
         return "قد شلوار باید مقداری عددی داشته باشد";
       case '"pantsHeight" must be larger than or equal to 0':
         return "قد شلوار باید بزرگتر یا مساوی ۰ باشد";
-      case '"pantsHeight" must be less than or equal to 110':
-        return "قد شلوار باید کمتر یا مساوی ۱۱۰ باشد ";
+      case '"pantsHeight" must be less than or equal to 120':
+        return "قد شلوار باید کمتر یا مساوی ۱۲۰ باشد ";
 
       case '"pantsLeg" must be a number':
         return "دور ران باید مقداری عددی داشته باشد";
