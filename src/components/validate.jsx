@@ -52,6 +52,9 @@ class Validate extends Component {
       shirtShoulder: "",
       shirtSleeve: "",
     });
+    this.props.invoiceCanceled({
+      _id: "",
+    });
   };
 
   render() {
