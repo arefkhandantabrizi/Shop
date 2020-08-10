@@ -16,6 +16,7 @@ class Validate extends Component {
     this.props.orderCanceled({
       url: "",
       authority: "",
+      invoiceID: "",
     });
   };
 
