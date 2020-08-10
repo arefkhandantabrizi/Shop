@@ -21,6 +21,9 @@ const slice = createSlice({
     _id: "",
   },
   reducers: {
+    invoiceCanceled: (invoices, action) => {
+      invoices._id = action.payload._id;
+    },
     invoiceValidated: (invoices, action) => {
       const { ispayed, paymentcode } = action.payload;
       invoices.ispayed = ispayed;
@@ -94,6 +97,7 @@ export const {
   invoiceRequestsFailed,
   invoiceValidated,
   invoiceClearedData,
+  invoiceCanceled,
 } = slice.actions;
 
 const url = "/invoices";

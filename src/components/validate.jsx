@@ -9,6 +9,7 @@ import {
   orderListEmptied,
   orderCanceled,
 } from "../store/order";
+import { invoiceCanceled } from "../store/invoice";
 import { updateInvoice } from "../store/invoice";
 
 class Validate extends Component {
@@ -16,7 +17,9 @@ class Validate extends Component {
     this.props.orderCanceled({
       url: "",
       authority: "",
-      invoiceID: "",
+    });
+    this.props.invoiceCanceled({
+      invoiceCanceled: "",
     });
   };
 
@@ -130,7 +133,13 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { validatePayment, updateInvoice, orderListEmptied, orderCanceled },
+    {
+      validatePayment,
+      updateInvoice,
+      orderListEmptied,
+      orderCanceled,
+      invoiceCanceled,
+    },
     dispatch
   );
 };
