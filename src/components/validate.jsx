@@ -9,8 +9,7 @@ import {
   orderListEmptied,
   orderCanceled,
 } from "../store/order";
-import { invoiceCanceled } from "../store/invoice";
-import { updateInvoice } from "../store/invoice";
+import { updateInvoice, invoiceCanceled } from "../store/invoice";
 
 class Validate extends Component {
   handleError = () => {
@@ -19,7 +18,7 @@ class Validate extends Component {
       authority: "",
     });
     this.props.invoiceCanceled({
-      invoiceCanceled: "",
+      _id: "",
     });
   };
 
