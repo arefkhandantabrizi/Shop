@@ -25,9 +25,9 @@ class OrderPantsForm extends Form {
   };
 
   schema = {
-    pantsHeight: Joi.number().min(60).max(120).required().label("pantsHeight"),
-    pantsLeg: Joi.number().min(45).required().label("pantsLeg"),
-    pantsHip: Joi.number().min(70).required().label("pantsHip"),
+    pantsHeight: Joi.number().min(0).max(120).required().label("pantsHeight"),
+    pantsLeg: Joi.number().min(0).required().label("pantsLeg"),
+    pantsHip: Joi.number().min(0).required().label("pantsHip"),
     pantsQuantity: Joi.number()
       .min(0)
       .max(10)

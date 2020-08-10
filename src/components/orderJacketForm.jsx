@@ -27,15 +27,11 @@ class OrderJacketForm extends Form {
   };
 
   schema = {
-    jacketChest: Joi.number().min(65).required().label("jacketChest"),
-    jacketSleeve: Joi.number().min(30).required().label("jacketSleeve"),
-    jacketHeight: Joi.number()
-      .min(61)
-      .max(120)
-      .required()
-      .label("jacketHeight"),
-    jacketShoulder: Joi.number().min(24).required().label("jacketShoulder"),
-    jacketHip: Joi.number().min(70).required().label("jacketHip"),
+    jacketChest: Joi.number().min(0).required().label("jacketChest"),
+    jacketSleeve: Joi.number().min(0).required().label("jacketSleeve"),
+    jacketHeight: Joi.number().min(0).max(120).required().label("jacketHeight"),
+    jacketShoulder: Joi.number().min(0).required().label("jacketShoulder"),
+    jacketHip: Joi.number().min(0).required().label("jacketHip"),
     jacketQuantity: Joi.number()
       .min(0)
       .max(10)

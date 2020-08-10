@@ -372,36 +372,36 @@ class Form extends Component {
 
       case '"jacketHeight" must be a number':
         return "قد مانتو باید مقداری عددی داشته باشد";
-      case '"jacketHeight" must be larger than or equal to 61':
-        return "قد مانتو باید بزرگتر یا مساوی ۶۱ باشد";
+      case '"jacketHeight" must be larger than or equal to 0':
+        return "قد مانتو باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketHeight" must be less than or equal to 105':
         return "قد مانتو باید کمتر یا مساوی ۱۰۵ باشد ";
 
       case '"jacketSleeve" must be a number':
         return "قد آستین باید مقداری عددی داشته باشد";
-      case '"jacketSleeve" must be larger than or equal to 30':
-        return "قد آستین باید بزرگتر یا مساوی ۳۰ باشد";
+      case '"jacketSleeve" must be larger than or equal to 0':
+        return "قد آستین باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketSleeve" must be less than or equal to 68':
         return "قد آستین باید کمتر یا مساوی ۶۸ باشد ";
 
       case '"jacketChest" must be a number':
         return "دور سینه باید مقداری عددی داشته باشد";
-      case '"jacketChest" must be larger than or equal to 65':
-        return "دور سینه باید بزرگتر یا مساوی ۶۵ باشد";
+      case '"jacketChest" must be larger than or equal to 0':
+        return "دور سینه باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketChest" must be less than or equal to 100':
         return "دور سینه باید کمتر یا مساوی ۱۰۰ باشد ";
 
       case '"jacketShoulder" must be a number':
         return "تمام شانه باید مقداری عددی داشته باشد";
-      case '"jacketShoulder" must be larger than or equal to 24':
-        return "تمام شانه باید بزرگتر یا مساوی ۲۴ باشد";
+      case '"jacketShoulder" must be larger than or equal to 0':
+        return "تمام شانه باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketShoulder" must be less than or equal to 40':
         return "تمام شانه باید کمتر یا مساوی ۴۰ باشد ";
 
       case '"jacketHip" must be a number':
         return "دور باسن باید مقداری عددی داشته باشد";
-      case '"jacketHip" must be larger than or equal to 70':
-        return "دور باسن باید بزرگتر یا مساوی ۷۰ باشد";
+      case '"jacketHip" must be larger than or equal to 0':
+        return "دور باسن باید بزرگتر یا مساوی ۰ باشد";
       case '"jacketHip" must be less than or equal to 110':
         return "دور باسن باید کمتر یا مساوی ۱۱۰ باشد ";
 
@@ -414,36 +414,36 @@ class Form extends Component {
 
       case '"shirtHeight" must be a number':
         return "قد بلوز باید مقداری عددی داشته باشد";
-      case '"shirtHeight" must be larger than or equal to 45':
-        return "قد بلوز باید بزرگتر یا مساوی ۴۵ باشد";
+      case '"shirtHeight" must be larger than or equal to 0':
+        return "قد بلوز باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtHeight" must be less than or equal to 75':
         return "قد بلوز باید کمتر یا مساوی ۷۵ باشد ";
 
       case '"shirtSleeve" must be a number':
         return "قد آستین باید مقداری عددی داشته باشد";
-      case '"shirtSleeve" must be larger than or equal to 30':
-        return "قد آستین باید بزرگتر یا مساوی ۳۰ باشد";
+      case '"shirtSleeve" must be larger than or equal to 0':
+        return "قد آستین باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtSleeve" must be less than or equal to 70':
         return "قد آستین باید کمتر یا مساوی ۷۰ باشد ";
 
       case '"shirtChest" must be a number':
         return "دور سینه باید مقداری عددی داشته باشد";
-      case '"shirtChest" must be larger than or equal to 70':
-        return "دور سینه باید بزرگتر یا مساوی ۷۰ باشد";
+      case '"shirtChest" must be larger than or equal to 0':
+        return "دور سینه باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtChest" must be less than or equal to 125':
         return "دور سینه باید کمتر یا مساوی ۱۲۵ باشد ";
 
       case '"shirtShoulder" must be a number':
         return "تمام شانه باید مقداری عددی داشته باشد";
-      case '"shirtShoulder" must be larger than or equal to 28':
-        return "تمام شانه باید بزرگتر یا مساوی ۲۸ باشد";
+      case '"shirtShoulder" must be larger than or equal to 0':
+        return "تمام شانه باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtShoulder" must be less than or equal to 45':
         return "تمام شانه باید کمتر یا مساوی ۴۵ باشد ";
 
       case '"shirtHip" must be a number':
         return "دور باسن باید مقداری عددی داشته باشد";
-      case '"shirtHip" must be larger than or equal to 70':
-        return "دور باسن باید بزرگتر یا مساوی ۷۰ باشد";
+      case '"shirtHip" must be larger than or equal to 0':
+        return "دور باسن باید بزرگتر یا مساوی ۰ باشد";
       case '"shirtHip" must be less than or equal to 125':
         return "دور باسن باید کمتر یا مساوی ۱۲۵ باشد ";
 
@@ -456,29 +456,29 @@ class Form extends Component {
 
       case '"pantsHeight" must be a number':
         return "قد شلوار باید مقداری عددی داشته باشد";
-      case '"pantsHeight" must be larger than or equal to 60':
-        return "قد شلوار باید بزرگتر یا مساوی ۶۰ باشد";
+      case '"pantsHeight" must be larger than or equal to 0':
+        return "قد شلوار باید بزرگتر یا مساوی ۰ باشد";
       case '"pantsHeight" must be less than or equal to 110':
         return "قد شلوار باید کمتر یا مساوی ۱۱۰ باشد ";
 
       case '"pantsLeg" must be a number':
         return "دور ران باید مقداری عددی داشته باشد";
-      case '"pantsLeg" must be larger than or equal to 45':
-        return "دور ران باید بزرگتر یا مساوی ۴۵ باشد";
+      case '"pantsLeg" must be larger than or equal to 0':
+        return "دور ران باید بزرگتر یا مساوی ۰ باشد";
       case '"pantsLeg" must be less than or equal to 75':
         return "دور ران باید کمتر یا مساوی ۷۵ باشد ";
 
       case '"pantsHip" must be a number':
         return "دور باسن باید مقداری عددی داشته باشد";
-      case '"pantsHip" must be larger than or equal to 70':
-        return "دور باسن باید بزرگتر یا مساوی ۷۰ باشد";
+      case '"pantsHip" must be larger than or equal to 0':
+        return "دور باسن باید بزرگتر یا مساوی ۰ باشد";
       case '"pantsHip" must be less than or equal to 125':
         return "دور باسن باید کمتر یا مساوی ۱۲۵ باشد ";
 
       case '"pantsQuantity" must be a number':
         return "تعداد شلوار باید مقداری عددی داشته باشد";
       case '"pantsQuantity" must be larger than or equal to 0':
-        return "تعداد شلوار باید بزرگتر یا مساوی۰۱ باشد";
+        return "تعداد شلوار باید بزرگتر یا مساوی ۰ باشد";
       case '"pantsQuantity" must be less than or equal to 10':
         return "تعداد شلوار باید کمتر یا مساوی ۱۰ باشد ";
 
