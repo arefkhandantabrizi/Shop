@@ -12,6 +12,11 @@ const slice = createSlice({
   },
 
   reducers: {
+    schoolsLogouted: (schools, action) => {
+      schools.selectedGrade = action.payload.selectedGrade;
+      schools.selectedSchool = action.payload.selectedSchool;
+    },
+
     schoolsSelected: (school, action) => {
       school.selectedSchool = action.payload.selectedSchool;
     },
@@ -49,6 +54,7 @@ export const {
   schoolsReceived,
   schoolsAdded,
   schoolsRequested,
+  schoolsLogouted,
 } = slice.actions;
 
 const url = "/schools";

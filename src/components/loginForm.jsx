@@ -87,7 +87,7 @@ class LoginForm extends Form {
 
               <div className="login__registration-btn">
                 <span className="login__registration-txt">
-                  اگر ثبت نام نکرده اید ابتدا
+                  برای اولین ورود باید
                   <Link to="/register" className="login__registration-btn">
                     ثبت نام
                   </Link>

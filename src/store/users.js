@@ -33,7 +33,6 @@ const slice = createSlice({
       users.data.schoolname = schoolname;
       users.data.schoolgrade = schoolgrade;
       users.data.gender = gender;
-      users.submited = true;
       users.error = "";
     },
     usersRequestFailed: (users, action) => {
@@ -64,6 +63,7 @@ const slice = createSlice({
       users.data.username = action.payload.username;
       users.data.schoolgrade = action.payload.schoolgrade;
       users.data.schoolname = action.payload.schoolname;
+      users.data.name = action.payload.name;
       users.error = action.payload.error;
       users.jwt = action.payload.jwt;
       users.submited = action.payload.submited;

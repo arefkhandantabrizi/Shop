@@ -7,10 +7,17 @@ import Icon from "./common/icon";
 import { usersLogouted } from "../store/users";
 import { invoiceClearedData } from "../store/invoice";
 import { orderListEmptied } from "../store/order";
+import { schoolsLogouted } from "../store/school";
 
 class NavBar extends Component {
   handleClick = () => {
+    this.props.schoolsLogouted({
+      selectedGrade: "",
+      selectedSchool: "",
+    });
+
     this.props.usersLogouted({
+      name: "",
       _id: "",
       gender: "",
       username: "",
@@ -166,7 +173,7 @@ const mapStateToProps = (state) => {
 };
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { usersLogouted, invoiceClearedData, orderListEmptied },
+    { usersLogouted, invoiceClearedData, orderListEmptied, schoolsLogouted },
     dispatch
   );
 };

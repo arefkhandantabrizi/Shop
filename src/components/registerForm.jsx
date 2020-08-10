@@ -7,7 +7,7 @@ import Form from "./common/form";
 import NavBar from "./navBar";
 import Footer from "./footer";
 import { loadSchools, schoolsSelected, gradeSelected } from "../store/school";
-import { addUser } from "../store/users";
+import { addUser, usersAdded } from "../store/users";
 import { bugAdded, btnClassChanged } from "../store/bugs";
 
 // import { register } from "../services/userService";
@@ -76,6 +76,13 @@ class RegisterForm extends Form {
     } else if (counter === 0) {
       this.props.btnClassChanged({
         btnClass: "btn registration__btn",
+      });
+      this.props.usersAdded({
+        username: this.state.data.username,
+        password: this.state.data.password,
+        schoolname: this.props.selectedSchool,
+        schoolgrade: this.state.data.schoolGrade,
+        gender: this.state.gender,
       });
     }
   };
@@ -238,6 +245,10 @@ class RegisterForm extends Form {
 }
 const mapStateToProps = (state) => {
   return {
+    gender: state.entities.users.data.gender,
+    name: state.entities.users.data.name,
+    password: state.entities.users.data.password,
+    username: state.entities.users.data.username,
     btnClass: state.entities.bugs.btnClass,
     schools: state.entities.schools,
     selectedSchool: state.entities.schools.selectedSchool,
@@ -263,6 +274,7 @@ const matchDispatchToProps = (dispatch) => {
       bugAdded,
       btnClassChanged,
       gradeSelected,
+      usersAdded,
     },
     dispatch
   );
