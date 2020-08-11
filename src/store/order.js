@@ -175,6 +175,8 @@ const slice = createSlice({
     orderCanceled: (orders, action) => {
       orders.url = "";
       orders.authority = "";
+      orders.status = "";
+      orders.paymentcode = "";
     },
 
     orderListEmptied: (orders, action) => {
@@ -184,7 +186,8 @@ const slice = createSlice({
       orders.totalCount = action.payload.totalCount;
       orders.totalPrice = action.payload.totalPrice;
       orders.url = action.payload.url;
-
+      orders.status = action.payload.status;
+      orders.paymentcode = action.payload.paymentcode;
       orders.items.jacket.price = action.payload.jacketPrice;
       orders.items.jacket.quantity = action.payload.jacketQuantity;
       orders.items.jacket.chest = action.payload.jacketChest;
