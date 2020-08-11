@@ -47,6 +47,8 @@ const slice = createSlice({
     url: "",
     authority: "",
     failedAuthority: "",
+    paymentcode: "",
+    status: "",
     error: "",
     submited: false,
     loading: false,
@@ -160,7 +162,9 @@ const slice = createSlice({
       orders.loading = false;
     },
     validateRequested: (orders, action) => {
-      orders.authority = action.payload;
+      const { status, RefID } = action.payload;
+      orders.paymentcode = RefID;
+      orders.status = status;
       orders.submited = true;
     },
     validateRequestedFailed: (orders, action) => {

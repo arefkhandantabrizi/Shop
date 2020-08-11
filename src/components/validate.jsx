@@ -16,6 +16,8 @@ class Validate extends Component {
     this.props.orderCanceled({
       url: "",
       authority: "",
+      status: "",
+      paymentcode: "",
     });
     this.props.invoiceCanceled({
       _id: "",
@@ -26,6 +28,8 @@ class Validate extends Component {
     this.props.orderListEmptied({
       list: [],
       authority: "",
+      status: "",
+      paymentcode: "",
       submited: "",
       totalCount: 0,
       totalPrice: 0,
@@ -66,25 +70,26 @@ class Validate extends Component {
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
       });
-      if (this.props.submited && this.props.failedAuthority === "") {
+      if (this.props.submited && this.props.status === 100) {
         this.props.updateInvoice(
           {
             _id: this.props.invoiceID,
             ispayed: true,
-            paymentcode: this.props.authority,
-          },
-          this.props.jwt
-        );
-      } else if (this.props.submited && this.props.failedAuthority !== "") {
-        this.props.updateInvoice(
-          {
-            _id: this.props.invoiceID,
-            ispayed: true,
-            paymentcode: this.props.failedAuthority,
+            paymentcode: this.props.paymentcode,
           },
           this.props.jwt
         );
       }
+      //  else if (this.props.submited && this.props.failedAuthority !== "") {
+      //   this.props.updateInvoice(
+      //     {
+      //       _id: this.props.invoiceID,
+      //       ispayed: false,
+      //       paymentcode: this.props.failedAuthority,
+      //     },
+      //     this.props.jwt
+      //   );
+      // }
 
       return (
         <div className="validate">
@@ -124,8 +129,10 @@ class Validate extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    status: state.entities.orders.status,
     totalPrice: state.entities.orders.totalPrice,
     authority: state.entities.orders.authority,
+    paymentcode: state.entities.orders.paymentcode,
     failedAuthority: state.entities.orders.failedAuthority,
     jwt: state.entities.users.jwt,
     invoiceID: state.entities.invoices._id,
