@@ -88,25 +88,31 @@ class Validate extends Component {
               <Loader type="Grid" color="#c69963" height={80} width={80} />
             </div>
           )}
-          {!this.props.loading && (<Icon
-            name="icon-check-square"
-            className="validate__icon validate__icon--success"
-          />
-          <div>
-            <p className="validate__text">
-              سفارش شما با موفقیت ثبت شد. ضمن تشکر از خرید شما، توصیه میکنیم
-              برای اطلاع از وضعیت لباس در کانال تلگرام تولیدی ملینا به آدرس
-              @tolidi_melina عضو شوید
-            </p>
-          </div>
-          <Link
-            to="/"
-            className="btn validate__btn"
-            onClick={this.handleClick}
-            replace
-          >
-            بازگشت به سایت
-          </Link>)}
+          {!this.props.loading && (
+            <Icon
+              name="icon-check-square"
+              className="validate__icon validate__icon--success"
+            />
+          )}
+          {!this.props.loading && (
+            <div>
+              <p className="validate__text">
+                سفارش شما با موفقیت ثبت شد. ضمن تشکر از خرید شما، توصیه میکنیم
+                برای اطلاع از وضعیت لباس در کانال تلگرام تولیدی ملینا به آدرس
+                @tolidi_melina عضو شوید
+              </p>
+            </div>
+          )}
+          {!this.props.loading && (
+            <Link
+              to="/"
+              className="btn validate__btn"
+              onClick={this.handleClick}
+              replace
+            >
+              بازگشت به سایت
+            </Link>
+          )}
         </div>
       );
     } else if (this.props.status !== 100) {
@@ -117,21 +123,27 @@ class Validate extends Component {
               <Loader type="Grid" color="#c69963" height={80} width={80} />
             </div>
           )}
-          {!this.props.loading && (<Icon
-            name="icon-cancel-circle"
-            className="validate__icon validate__icon--failed"
-          />
-          <div>
-            <p className="validate__text">پرداخت سفارش موفق نبود</p>
-          </div>
-          <Link
-            to="/"
-            className="btn validate__btn"
-            onClick={this.handleError}
-            replace
-          >
-            بازگشت به سایت
-          </Link>)}
+          {!this.props.loading && (
+            <Icon
+              name="icon-cancel-circle"
+              className="validate__icon validate__icon--failed"
+            />
+          )}
+          {!this.props.loading && (
+            <div>
+              <p className="validate__text">پرداخت سفارش موفق نبود</p>
+            </div>
+          )}
+          {!this.props.loading && (
+            <Link
+              to="/"
+              className="btn validate__btn"
+              onClick={this.handleError}
+              replace
+            >
+              بازگشت به سایت
+            </Link>
+          )}
         </div>
       );
     }
