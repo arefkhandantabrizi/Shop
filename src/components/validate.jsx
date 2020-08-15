@@ -74,16 +74,17 @@ class Validate extends Component {
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
       });
-      if (this.props.submited && this.props.status === 100) {
-        this.props.updateInvoice(
-          {
-            _id: this.props.invoiceID,
-            ispayed: true,
-            paymentcode: this.props.paymentcode,
-          },
-          this.props.jwt
-        );
-      }
+    }
+    if (this.props.submited && this.props.status === 100) {
+      this.props.updateInvoice(
+        {
+          _id: this.props.invoiceID,
+          ispayed: true,
+          paymentcode: this.props.paymentcode,
+        },
+        this.props.jwt
+      );
+
       return (
         <div className="validate">
           {this.props.loading && (
