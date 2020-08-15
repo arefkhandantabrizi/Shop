@@ -88,7 +88,7 @@ class Validate extends Component {
               <Loader type="Grid" color="#c69963" height={80} width={80} />
             </div>
           )}
-          <Icon
+          {!this.props.loading && (<Icon
             name="icon-check-square"
             className="validate__icon validate__icon--success"
           />
@@ -106,7 +106,7 @@ class Validate extends Component {
             replace
           >
             بازگشت به سایت
-          </Link>
+          </Link>)}
         </div>
       );
     } else if (this.props.status !== 100) {
@@ -117,7 +117,7 @@ class Validate extends Component {
               <Loader type="Grid" color="#c69963" height={80} width={80} />
             </div>
           )}
-          <Icon
+          {!this.props.loading && (<Icon
             name="icon-cancel-circle"
             className="validate__icon validate__icon--failed"
           />
@@ -131,7 +131,7 @@ class Validate extends Component {
             replace
           >
             بازگشت به سایت
-          </Link>
+          </Link>)}
         </div>
       );
     }

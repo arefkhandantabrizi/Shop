@@ -182,6 +182,8 @@ const slice = createSlice({
       orders.authority = "";
       orders.status = "";
       orders.paymentcode = "";
+            orders.loading = false;
+
     },
 
     orderListEmptied: (orders, action) => {
@@ -214,6 +216,8 @@ const slice = createSlice({
       orders.items.shirt.quantity = action.payload.shirtQuantity;
       orders.items.shirt.shoulder = action.payload.shirtShoulder;
       orders.items.shirt.sleeve = action.payload.shirtSleeve;
+            orders.loading = false;
+
     },
   },
 });
