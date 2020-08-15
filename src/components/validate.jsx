@@ -66,7 +66,10 @@ class Validate extends Component {
   render() {
     const value = queryString.parse(this.props.location.search);
     const authority = value.Authority;
-    if (this.props.authority === authority) {
+    if (
+      this.props.authority === authority &&
+      this.props.validateFlag === true
+    ) {
       this.props.validatePayment({
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
@@ -161,6 +164,7 @@ const mapStateToProps = (state) => {
     invoiceID: state.entities.invoices._id,
     submited: state.entities.orders.submited,
     loading: state.entities.orders.loading,
+    validateFlag: state.entities.orders.validateFlag,
   };
 };
 

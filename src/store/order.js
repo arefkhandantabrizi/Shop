@@ -47,6 +47,7 @@ const slice = createSlice({
     url: "",
     authority: "",
     failedAuthority: "",
+    validateFlag: true,
     paymentcode: "",
     status: "",
     error: "",
@@ -170,11 +171,13 @@ const slice = createSlice({
       orders.status = status;
       orders.submited = true;
       orders.loading = false;
+      orders.validateFlag = false;
     },
     validateRequestedFailed: (orders, action) => {
       orders.failedAuthority = action.payload;
       orders.submited = true;
       orders.loading = false;
+      orders.validateFlag = false;
     },
 
     orderCanceled: (orders, action) => {
@@ -182,8 +185,8 @@ const slice = createSlice({
       orders.authority = "";
       orders.status = "";
       orders.paymentcode = "";
-            orders.loading = false;
-
+      orders.loading = false;
+      orders.validateFlag = true;
     },
 
     orderListEmptied: (orders, action) => {
@@ -216,8 +219,8 @@ const slice = createSlice({
       orders.items.shirt.quantity = action.payload.shirtQuantity;
       orders.items.shirt.shoulder = action.payload.shirtShoulder;
       orders.items.shirt.sleeve = action.payload.shirtSleeve;
-            orders.loading = false;
-
+      orders.loading = false;
+      orders.validateFlag = true;
     },
   },
 });
