@@ -1,9 +1,12 @@
 .cart {
   grid-column: sidebar-start / full-end;
-  background-color: rgba($color-grey-light-1, 0.5);
+  // background-color: rgba($color-grey-light-1, 0.5);
   margin-right: 3rem;
   padding: 1rem;
   display: grid;
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 3/4;
+  }
 
   &__schoolnotification {
     font-size: 1.4rem;
@@ -43,50 +46,53 @@
   }
   &__Input {
     // margin-right: 3rem;
-    background-color: rgba($color-grey-light-1, 0.5);
-    font-size: 1.5rem;
+    // background-color: rgba($color-grey-light-1, 0.5);
+    font-size: 1.4rem;
     font-family: inherit;
     color: inherit;
     padding: 1.5rem 2rem;
     border-radius: 3rem;
-    border: none;
-    border-bottom: 3px solid transparent;
-    width: 60%;
+    // border: none;
+    // border-bottom: 3px solid transparent;
+    width: 40%;
     display: block;
     transition: all 0.3s;
+    @media only screen and (max-width: $bp-small) {
+      width: 90%;
+    }
 
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-grey-light-1, 0.1);
-      border-bottom: 3px solid $color-primary;
+      // border-bottom: 3px solid $color-primary;
     }
 
-    &:focus:invalid {
-      border-bottom: 3px solid $color-secondary;
-    }
+    // &:focus:invalid {
+    //   border-bottom: 3px solid $color-secondary;
+    // }
 
-    &::-webkit-input-placeholder {
-      color: $color-grey-dark-2;
-    }
+    // &::-webkit-input-placeholder {
+    //   color: $color-grey-dark-2;
+    // }
   }
   &__label {
-    position: absolute;
-    top: 105%;
+    // position: absolute;
+    // top: 105%;
     // right: 3rem;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-right: 2rem;
-    margin-top: 1rem;
-    display: block;
-    transition: all 0.3s;
+    // transform: translateY(-50%);
+    font-size: 1.3rem;
+    // font-weight: 400;
+    // margin-right: 2rem;
+    // margin-top: 1rem;
+    // display: block;
+    // transition: all 0.3s;
   }
 
-  &__Input:placeholder-shown + &__label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8rem);
-  }
+  // &__Input:placeholder-shown + &__label {
+  //   opacity: 0;
+  //   visibility: hidden;
+  //   transform: translateY(-8rem);
+  // }
 
   &__btn {
     margin-right: 0;

@@ -161,15 +161,20 @@ const slice = createSlice({
       orders.url = url;
       orders.loading = false;
     },
+    validateRequestStarted: (orders, action) => {
+      orders.loading = true;
+    },
     validateRequested: (orders, action) => {
       const { status, RefID } = action.payload;
       orders.paymentcode = RefID;
       orders.status = status;
       orders.submited = true;
+      orders.loading = false;
     },
     validateRequestedFailed: (orders, action) => {
       orders.failedAuthority = action.payload;
       orders.submited = true;
+      orders.loading = false;
     },
 
     orderCanceled: (orders, action) => {
@@ -226,6 +231,7 @@ export const {
   shirtAdded,
   pantsAdded,
   ordersRequestFailed,
+  validateRequestStarted,
 } = slice.actions;
 
 const url = "/addPayments";
@@ -244,6 +250,7 @@ export const validatePayment = (orders) =>
     url: "/validatePayments",
     method: "post",
     data: orders,
+    onStart: validateRequestStarted.type,
     onSuccess: validateRequested.type,
     onError: validateRequestedFailed.type,
   });

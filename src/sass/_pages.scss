@@ -1,5 +1,8 @@
 .section-login {
   grid-column: sidebar-start / full-end;
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 3/4;
+  }
 
   background-image: linear-gradient(
       260deg,
@@ -32,6 +35,9 @@
 
 .section-registration {
   grid-column: sidebar-start / full-end;
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 3/4;
+  }
 
   background-image: linear-gradient(
       260deg,

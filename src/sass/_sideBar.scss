@@ -5,10 +5,17 @@
   background-color: $color-gray-dark-3;
 
   @media only screen and (max-width: $bp-small) {
-    // grid-column: sidebar-start / full-end;
+    grid-row: 2/3;
+    grid-column: sidebar-start / full-end;
   }
 }
 .side-nav {
+  @media only screen and (max-width: $bp-small) {
+    display: flex;
+    margin-top: 0;
+    padding: 2rem 0;
+  }
+
   font-size: 1.4rem;
   list-style: none;
   margin-top: 3.5rem;
@@ -56,23 +63,4 @@
   &:not(:last-child) {
     margin-bottom: 3rem;
   }
-
-  // &__link:link,
-  // &__link:visited {
-  //   font-size: 1.4rem;
-  //   color: #fff;
-  //   text-decoration: none;
-  //   font-family: $font-display;
-  //   text-align: center;
-  //   padding: 1.5rem 3.5rem;
-  //   display: block;
-  //   transition: all 0.2s;
-  //   border-radius: 3rem;
-  // }
-
-  // &__link:hover,
-  // &__link:active {
-  //   // background-color: rgba(#c66863, 0.05);
-  //   transform: translateY(-3px);
-  // }
 }

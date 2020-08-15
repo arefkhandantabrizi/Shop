@@ -1,10 +1,15 @@
 .orderpants {
   grid-column: sidebar-end / full-end;
   padding: 1rem 3rem;
-  background-color: rgba($color-grey-light-1, 0.5);
+  // background-color: rgba($color-grey-light-1, 0.5);
+  @media only screen and (max-width: $bp-small) {
+    grid-column: sidebar-start / full-end;
+
+    grid-row: 3/4;
+  }
 
   &__form {
-    background-color: rgba($color-grey-light-1, 0.5);
+    // background-color: rgba($color-grey-light-1, 0.5);
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -15,7 +20,7 @@
   }
 
   &__heading {
-    background-color: rgba($color-grey-light-1, 0.5);
+    // background-color: rgba($color-grey-light-1, 0.5);
 
     padding: 2rem 3rem;
   }
@@ -23,14 +28,14 @@
   &__input {
     grid-row: 1 / span 4;
     grid-column: 1 / span 1;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-family: inherit;
     color: inherit;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 3rem;
-    background-color: rgba($color-grey-light-1, 0.5);
-    border: none;
-    border-bottom: 3px solid transparent;
+    // background-color: rgba($color-grey-light-1, 0.5);
+    // border: none;
+    // border-bottom: 3px solid transparent;
     width: 70%;
     display: block;
     transition: all 0.3s;
@@ -42,48 +47,48 @@
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-grey-light-1, 0.1);
-      border-bottom: 3px solid $color-primary;
+      // border-bottom: 3px solid transparent;
     }
 
-    &:focus:invalid {
-      border-bottom: 3px solid $color-secondary;
-    }
+    // &:focus:invalid {
+    //   border-bottom: 3px solid $color-secondary;
+    // }
 
-    &::-webkit-input-placeholder {
-      color: $color-grey-dark-2;
-    }
+    // &::-webkit-input-placeholder {
+    //   color: $color-grey-dark-2;
+    // }
 
-    &-1 {
-      grid-column: 1 / span 1;
-    }
-    &-2 {
-      grid-column: 1 / span 1;
-    }
-    &-3 {
-      grid-column: 1 / span 1;
-    }
-    &-4 {
-      grid-column: 1 / span 1;
-    }
+    // &-1 {
+    //   grid-column: 1 / span 1;
+    // }
+    // &-2 {
+    //   grid-column: 1 / span 1;
+    // }
+    // &-3 {
+    //   grid-column: 1 / span 1;
+    // }
+    // &-4 {
+    //   grid-column: 1 / span 1;
+    // }
   }
   &__label {
-    position: absolute;
-    top: 105%;
+    // position: absolute;
+    // top: 105%;
     // right: 3rem;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-right: 2rem;
-    margin-top: 0.7rem;
-    display: block;
-    transition: all 0.3s;
+    // transform: translateY(-50%);
+    font-size: 1.3rem;
+    // font-weight: 400;
+    // margin-right: 2rem;
+    // margin-top: 0.7rem;
+    // display: block;
+    // transition: all 0.3s;
   }
 
-  &__input:placeholder-shown + &__label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8rem);
-  }
+  // &__input:placeholder-shown + &__label {
+  //   opacity: 0;
+  //   visibility: hidden;
+  //   transform: translateY(-8rem);
+  // }
 
   // &__extra {
   //   grid-row: 1 / span 3;

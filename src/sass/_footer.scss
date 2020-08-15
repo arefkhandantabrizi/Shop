@@ -2,6 +2,9 @@
   background-color: $color-secondary;
   grid-column: sidebar-start / full-end;
   padding: 8rem;
+  @media only screen and (max-width: $bp-small) {
+    grid-row: 6/7;
+  }
 }
 
 .footernav {

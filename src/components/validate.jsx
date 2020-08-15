@@ -10,6 +10,8 @@ import {
   orderCanceled,
 } from "../store/order";
 import { updateInvoice, invoiceCanceled } from "../store/invoice";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 class Validate extends Component {
   handleError = () => {
@@ -63,9 +65,8 @@ class Validate extends Component {
 
   render() {
     const value = queryString.parse(this.props.location.search);
-    const status = value.Status;
     const authority = value.Authority;
-    if (status === "OK" && this.props.authority === authority) {
+    if (this.props.authority === authority) {
       this.props.validatePayment({
         Amount: this.props.totalPrice + 3000,
         Authority: this.props.authority,
@@ -80,19 +81,13 @@ class Validate extends Component {
           this.props.jwt
         );
       }
-      //  else if (this.props.submited && this.props.failedAuthority !== "") {
-      //   this.props.updateInvoice(
-      //     {
-      //       _id: this.props.invoiceID,
-      //       ispayed: false,
-      //       paymentcode: this.props.failedAuthority,
-      //     },
-      //     this.props.jwt
-      //   );
-      // }
-
       return (
         <div className="validate">
+          {this.props.loading && (
+            <div className="cart__loader">
+              <Loader type="Grid" color="#c69963" height={80} width={80} />
+            </div>
+          )}
           <Icon
             name="icon-check-square"
             className="validate__icon validate__icon--success"
@@ -104,26 +99,42 @@ class Validate extends Component {
               @tolidi_melina عضو شوید
             </p>
           </div>
-          <Link to="/" className="btn validate__btn" onClick={this.handleClick}>
+          <Link
+            to="/"
+            className="btn validate__btn"
+            onClick={this.handleClick}
+            replace
+          >
+            بازگشت به سایت
+          </Link>
+        </div>
+      );
+    } else if (this.props.status !== 100) {
+      return (
+        <div className="validate">
+          {this.props.loading && (
+            <div className="cart__loader">
+              <Loader type="Grid" color="#c69963" height={80} width={80} />
+            </div>
+          )}
+          <Icon
+            name="icon-cancel-circle"
+            className="validate__icon validate__icon--failed"
+          />
+          <div>
+            <p className="validate__text">پرداخت سفارش موفق نبود</p>
+          </div>
+          <Link
+            to="/"
+            className="btn validate__btn"
+            onClick={this.handleError}
+            replace
+          >
             بازگشت به سایت
           </Link>
         </div>
       );
     }
-    return (
-      <div className="validate">
-        <Icon
-          name="icon-cancel-circle"
-          className="validate__icon validate__icon--failed"
-        />
-        <div>
-          <p className="validate__text">پرداخت سفارش موفق نبود</p>
-        </div>
-        <Link to="/" className="btn validate__btn" onClick={this.handleError}>
-          بازگشت به سایت
-        </Link>
-      </div>
-    );
   }
 }
 
@@ -137,6 +148,7 @@ const mapStateToProps = (state) => {
     jwt: state.entities.users.jwt,
     invoiceID: state.entities.invoices._id,
     submited: state.entities.orders.submited,
+    loading: state.entities.orders.loading,
   };
 };
 

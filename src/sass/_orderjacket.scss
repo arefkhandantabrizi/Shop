@@ -1,12 +1,16 @@
 .orderjacket {
   grid-column: sidebar-end / full-end;
   padding: 1rem 3rem;
-  background-color: rgba($color-grey-light-1, 0.5);
+  background-color: $color-white;
+  @media only screen and (max-width: $bp-small) {
+    grid-column: sidebar-start / full-end;
+    grid-row: 3/4;
+  }
 
   &__form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    background-color: rgba($color-grey-light-1, 0.5);
+    // background-color: rgba($color-grey-light-1, 0.5);
     @media only screen and (max-width: $bp-small) {
       grid-template-columns: 1fr;
     }
@@ -14,21 +18,20 @@
 
   &__heading {
     padding: 2rem 3rem;
-    background-color: rgba($color-grey-light-1, 0.5);
+    // background-color: rgba($color-grey-light-1, 0.5);
   }
 
   &__input {
     // margin-right: 3rem;
-    background-color: rgba($color-grey-light-1, 0.5);
+    // background-color: rgba($color-grey-light-1, 0.5);
     grid-row: 1 / span 4;
     grid-column: 1 / span 1;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-family: inherit;
     color: inherit;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 3rem;
-    border: none;
-    border-bottom: 3px solid transparent;
+    // border-bottom: 2px solid transparent;
     width: 70%;
     display: block;
     transition: all 0.3s;
@@ -40,61 +43,70 @@
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-grey-light-1, 0.1);
-      border-bottom: 3px solid $color-primary;
+      // border-bottom: 3px solid $color-primary;
     }
 
-    &:focus:invalid {
-      border-bottom: 3px solid $color-secondary;
-    }
+    // &:focus:invalid {
+    //   border-bottom: 3px solid $color-tertiary;
+    // }
 
-    &::-webkit-input-placeholder {
-      color: $color-grey-dark-2;
-    }
+    // &::-webkit-input-placeholder {
+    //   color: $color-grey-dark-2;
+    // }
 
-    &-1 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
-    &-2 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
-    &-3 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
-    &-4 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
-    &-5 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
+    // &-1 {
+    //   // grid-column: 1 / span 1;
+    //   // border: 1px solid $color-secondary;
+    //   // border-bottom: 1px solid $color-secondary;
 
-    &-6 {
-      grid-column: 1 / span 1;
-      // background-color: rgba($color-grey-light-1, 0.5);
-    }
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
+    // &-2 {
+    //   grid-column: 1 / span 1;
+    //   // border: 1px solid $color-secondary;
+
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
+    // &-3 {
+    //   grid-column: 1 / span 1;
+    //   // border: 1px solid $color-secondary;
+
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
+    // &-4 {
+    //   grid-column: 1 / span 1;
+    //   // border: 1px solid $color-secondary;
+
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
+    // &-5 {
+    //   grid-column: 1 / span 1;
+    //   // border: 1px solid $color-secondary;
+
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
+
+    // &-6 {
+    //   // padding-right: 3rem; // border: 1px solid $color-secondary;
+
+    //   // background-color: rgba($color-grey-light-1, 0.5);
+    // }
   }
   &__label {
-    position: absolute;
-    // top: 105%;
-    // right: 3rem;
-    transform: translateY(-50%);
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-right: 2rem;
-    margin-top: 1rem;
-    display: block;
-    transition: all 0.3s;
+    // padding-left: 3rem;
+    font-size: 1.3rem;
+    // position: absolute;
+    // // top: 105%;
+    // // right: 3rem;
+    // transform: translateY(-50%);
+    // font-size: 1.4rem;
+    // font-weight: 400;
+    // margin-right: 2rem;
+    // margin-top: 1rem;
+    // display: block;
+    // transition: all 0.3s;
   }
 
-  &__input:placeholder-shown + &__label {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8rem);
-  }
   &__btn {
     // margin-right: 2rem;
     grid-column: 1 / span 1;

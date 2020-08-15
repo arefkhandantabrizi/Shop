@@ -74,9 +74,9 @@ class OrderJacketForm extends Form {
           <div className="alert alert__danger alert--order">
             در طول ثبت سفارش برای ثبت اعداد از صفحه کلید انگلیسی استفاده کنید
           </div>
-          <h1 className="orderjacket__heading heading-2--dark u-margin-top-small">
+          {/* <h1 className="orderjacket__heading heading-2--dark u-margin-top-small">
             سفارش مانتو
-          </h1>
+          </h1> */}
           <form onSubmit={this.handleSubmit} className="orderjacket__form">
             <div className="orderjacket__input">
               {this.renderInputOrder(

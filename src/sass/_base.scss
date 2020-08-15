@@ -39,6 +39,7 @@ $bp-small: 37.5rem; // 600px
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -57,7 +58,7 @@ html {
 
 body {
   font-family: $font-primary;
-  color: $color-grey-dark-2;
+  // color: $color-grey-dark-2;
   font-weight: 300;
   line-height: 1.6;
   direction: rtl;
@@ -69,7 +70,7 @@ body {
 }
 
 .container {
-  background-color: rgba($color-grey-light-1, 0.5);
+  // background-color: rgba($color-grey-light-1, 0.5);
 
   display: grid;
 
@@ -83,5 +84,8 @@ body {
   }
   @media only screen and (max-width: $bp-medium) {
     grid-template-rows: min-content minmax(90vw, max-content);
+  }
+  @media only screen and (max-width: $bp-small) {
+    grid-template-rows: min-content min-content minmax(90vw, max-content);
   }
 }

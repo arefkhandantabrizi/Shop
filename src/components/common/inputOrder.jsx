@@ -12,16 +12,16 @@ const InputOrder = ({
   return (
     <div className={divClass}>
       {error && <div className="orderalert orderalert__danger">{error}</div>}
+      <label htmlFor={name} className={labelClass}>
+        {label}
+      </label>
       <input
         {...rest}
         name={name}
         id={name}
         className={className}
-        placeholder={label}
+        // placeholder={label}
       />
-      <label htmlFor={name} className={labelClass}>
-        {label}
-      </label>
     </div>
   );
 };
