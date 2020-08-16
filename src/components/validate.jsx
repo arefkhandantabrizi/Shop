@@ -63,7 +63,7 @@ class Validate extends Component {
     });
   };
 
-  render() {
+  componentDidMount() {
     const value = queryString.parse(this.props.location.search);
     const authority = value.Authority;
     if (
@@ -75,6 +75,9 @@ class Validate extends Component {
         Authority: this.props.authority,
       });
     }
+  }
+
+  render() {
     if (this.props.submited && this.props.status === 100) {
       this.props.updateInvoice(
         {
