@@ -80,27 +80,27 @@ class NavBar extends Component {
               <img src={Logo} alt="logo" className="nav__img" />
             </li>
             <li className="nav__item">
-              <NavLink className="nav__link" to="/">
+              <NavLink className="nav__link" to="/" replace>
                 صفحه اصلی
               </NavLink>
             </li>
             {!this.props.submited && (
               <li className="nav__item">
-                <NavLink className="nav__link" to="/login">
+                <NavLink className="nav__link" to="/login" replace>
                   ورود
                 </NavLink>
               </li>
             )}
             {this.props.submited && (
               <li className="nav__item nav__item--order">
-                <NavLink className="nav__link" to={this.props.routeto}>
+                <NavLink className="nav__link" to={this.props.routeto} replace>
                   سفارش لباس
                 </NavLink>
               </li>
             )}
             {!this.props.submited && (
               <li className="nav__item nav__item--order">
-                <NavLink className="nav__link" to="/login">
+                <NavLink className="nav__link" to="/login" replace>
                   سفارش لباس
                 </NavLink>
               </li>
@@ -109,7 +109,7 @@ class NavBar extends Component {
           <div className="userpart">
             {this.props.submited && this.props.gender === "Male" && (
               <li className="nav__item nav__item--user">
-                <NavLink className="nav__link" to="#">
+                <NavLink className="nav__link" to="#" replace>
                   <Icon
                     name="icon-profile-male"
                     className="nav__icon nav__icon--user"
@@ -121,7 +121,7 @@ class NavBar extends Component {
             )}
             {this.props.submited && this.props.gender === "Female" && (
               <li className="nav__item nav__item--user">
-                <NavLink className="nav__link" to="#">
+                <NavLink className="nav__link" to="#" replace>
                   <Icon
                     name="icon-profile-female"
                     className="nav__icon nav__icon--user"
@@ -133,7 +133,7 @@ class NavBar extends Component {
             )}
             {this.props.submited && (
               <li className="nav__item">
-                <NavLink className="nav__link" to="/cart">
+                <NavLink className="nav__link" to="/cart" replace>
                   <Icon
                     name="icon-cart"
                     className="nav__icon nav__icon--cart"
@@ -150,6 +150,7 @@ class NavBar extends Component {
                   onClick={this.handleClick}
                   className="nav__link"
                   to="/"
+                  replace
                 >
                   خروج
                 </NavLink>

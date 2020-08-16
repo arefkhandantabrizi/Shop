@@ -14,12 +14,15 @@ import Validate from "./components/validate";
 import Cart from "./components/cart";
 import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./components/aboutUs";
+import { useClearCache } from "react-clear-cache";
 
 function App() {
   const location = useLocation();
+  const { isLatestVersion, emptyCacheStorage } = useClearCache();
 
   return (
     <React.Fragment>
+      {!isLatestVersion && emptyCacheStorage()}
       <ToastContainer rtl={true} />
       <div className="container">
         <Switch>

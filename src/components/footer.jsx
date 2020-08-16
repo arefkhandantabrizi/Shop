@@ -37,7 +37,7 @@ class Footer extends Component {
           دارد. هرگونه کپی برداری پیگرد قانونی دارد.
         </p>
         <p className="copyright">تابستان ۱۳۹۹</p>
-        <p className="copyright"> ۰.۳.۱</p>
+        <p className="copyright"> ۰.۳.۲</p>
       </footer>
     );
   }
