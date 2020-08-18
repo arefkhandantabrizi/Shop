@@ -4,6 +4,7 @@
   margin-right: 3rem;
   padding: 1rem;
   display: grid;
+  align-content: center;
   @media only screen and (max-width: $bp-small) {
     grid-row: 3/4;
   }
@@ -97,6 +98,12 @@
   &__btn {
     margin-right: 0;
     margin-bottom: 3rem;
+
+    &--disable {
+      background-color: transparent;
+      border: 1px solid $color-tertiary-dark;
+      color: $color-tertiary-dark;
+    }
   }
 }
 table {

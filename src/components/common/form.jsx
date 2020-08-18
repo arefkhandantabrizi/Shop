@@ -205,6 +205,13 @@ class Form extends Component {
       </button>
     );
   }
+  renderDisabledButton(label, className = "btn form__btn") {
+    return (
+      <button disabled className={className}>
+        {label}
+      </button>
+    );
+  }
 
   renderOutLineButton(label) {
     return (

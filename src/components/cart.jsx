@@ -25,8 +25,6 @@ class Cart extends Form {
     phone: Joi.string().required().label("تلفن"),
   };
 
-  // handleClick = () => {};
-
   columns = [
     {
       path: "name",
@@ -116,7 +114,13 @@ class Cart extends Form {
               "text",
               "cart__Input"
             )}
-            {this.renderButton("ثبت و پرداخت", "btn cart__btn")}
+            {this.props.loading &&
+              this.renderDisabledButton(
+                "لطفا صبر کنید",
+                "btn cart__btn--disable"
+              )}
+            {!this.props.loading &&
+              this.renderButton("ثبت و پرداخت", "btn cart__btn")}
             <span className="cart__text--payment">
               جمع کل {this.props.totalPrice}
               به اضافه ۳۰۰۰ تومان هزینه ارسال پیک .{" "}

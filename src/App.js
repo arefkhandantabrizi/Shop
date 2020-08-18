@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Home from "./components/home";
@@ -20,9 +20,12 @@ function App() {
   const location = useLocation();
   const { isLatestVersion, emptyCacheStorage } = useClearCache();
 
+  useEffect(() => {
+    !isLatestVersion && emptyCacheStorage();
+  });
+
   return (
     <React.Fragment>
-      {!isLatestVersion && emptyCacheStorage()}
       <ToastContainer rtl={true} />
       <div className="container">
         <Switch>
