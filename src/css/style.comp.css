@@ -869,7 +869,8 @@ body {
   grid-column: sidebar-start / full-end;
   margin-right: 3rem;
   padding: 1rem;
-  display: grid; }
+  display: grid;
+  align-content: center; }
   @media only screen and (max-width: 37.5rem) {
     .cart {
       grid-row: 3/4; } }
@@ -918,6 +919,10 @@ body {
   .cart__btn {
     margin-right: 0;
     margin-bottom: 3rem; }
+    .cart__btn--disable {
+      background-color: transparent;
+      border: 1px solid #42b0b4;
+      color: #42b0b4; }
 
 table {
   margin: 2rem auto;
