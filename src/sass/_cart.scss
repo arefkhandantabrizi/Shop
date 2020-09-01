@@ -103,6 +103,13 @@
       background-color: transparent;
       border: 1px solid $color-tertiary-dark;
       color: $color-tertiary-dark;
+      margin-bottom: 3rem;
+
+      &:active,
+      &:focus {
+        background-color: transparent;
+        outline: none;
+      }
     }
   }
 }

@@ -922,7 +922,11 @@ body {
     .cart__btn--disable {
       background-color: transparent;
       border: 1px solid #42b0b4;
-      color: #42b0b4; }
+      color: #42b0b4;
+      margin-bottom: 3rem; }
+      .cart__btn--disable:active, .cart__btn--disable:focus {
+        background-color: transparent;
+        outline: none; }
 
 table {
   margin: 2rem auto;

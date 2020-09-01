@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Home from "./components/home";
@@ -25,7 +25,7 @@ function App() {
   });
 
   return (
-    <React.Fragment>
+    <Fragment>
       <ToastContainer rtl={true} />
       <div className="container">
         <Switch>
@@ -115,7 +115,7 @@ function App() {
           <Redirect to="/not-found" />
         </Switch>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

@@ -1,13 +1,13 @@
 export default function calPriceScarf(userSchool) {
   switch (userSchool) {
     case "دبستان دخترانه فرهنگ":
-      return 16000;
+      return 18000;
 
     case "دبستان دخترانه مرحمت صائب":
-      return 16000;
+      return 18000;
 
     case "دبستان دخترانه فضیلت":
-      return 16000;
+      return 18000;
 
     case "متوسطه دوره دوم دخترانه رازی":
       return 23000;
